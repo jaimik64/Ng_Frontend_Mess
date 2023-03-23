@@ -10,6 +10,8 @@ export class LoaderComponent {
   loading: boolean = false;
 
   constructor(private loaderService: LoaderService) {
+    console.log('loader subscribed');
+    
     this.loaderService.isLoading.subscribe((v: boolean) => {
       this.loading = v;
     })

@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './components/shared/home/home.component';
-import { LoaderComponent } from './components/shared/loader/loader.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './components/shared/shared.module';
-
+import { InterceptorService } from './global-services/interceptor.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,11 @@ import { SharedModule } from './components/shared/shared.module';
     //   enabled: true
     // }),
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [HttpClientModule, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

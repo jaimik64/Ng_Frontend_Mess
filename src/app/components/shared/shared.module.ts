@@ -35,6 +35,7 @@ import {MatMenuModule} from '@angular/material/menu';
       MatToolbarModule,
       MatMenuModule
     ],
+  exports:[LoaderComponent, NavbarComponent, HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

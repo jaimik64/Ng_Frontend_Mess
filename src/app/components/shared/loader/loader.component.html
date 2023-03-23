@@ -1,14 +1,5 @@
-<div class="loader" [hidden]="!loading">
-    <div class="preloader">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
+<!-- <div class="overlay" *ngIf="loading"> -->
+<mat-progress-spinner *ngIf="loading" class="overlay" mode="determinate" value="90" color="primary">
+
+</mat-progress-spinner>
+<!-- </div> -->
