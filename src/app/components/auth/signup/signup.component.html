@@ -1,1 +1,109 @@
-<p>signup works!</p>
+<div class="container-fluid">
+    <div class="outer-container d-flex justify-content-center">
+        <div class="inner-container m-auto">
+            <div class="row no-gutters h-100 m-0">
+                <div class="img-container col-md-7 col-sm-6 justify-content-center align-items-center d-none d-sm-flex">
+
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12 justify-content-evenly d-flex flex-column p-4">
+                    <div class="d-flex justify-content-center flex-column">
+                        <span class="product-title">Mess Eats</span>
+                        <span class="product-subtext"></span>
+                    </div>
+                    <ng-section>
+                        <div class="p-2">
+                            <h1 class="title-header">
+                                Sign Up
+                            </h1>
+                        </div>
+                        <div>
+
+                            <div>
+                                <form id="login-frm" [formGroup]="authForm">
+                                    <div class="form" id="btn">
+                                        <ng-container *ngIf="nextForm === false">
+                                            <mat-form-field class="tl-1 w-100" appearance="outline" floatlabel="always">
+                                                <mat-label>User Name</mat-label>
+                                                <input matInput placeholder="Please enter your full name here"
+                                                    formControlName="name" />
+                                            </mat-form-field>
+
+                                            <mat-form-field class="tl-1 w-100" appearance="outline" floatlabel="always">
+                                                <mat-label>User Email-Id</mat-label>
+                                                <input matInput email placeholder="Please enter your email id here"
+                                                    formControlName="email" />
+                                            </mat-form-field>
+
+                                            <mat-form-field class="tl-1 w-100" appearance="outline" floatlabel="always">
+                                                <mat-label>Mobile No</mat-label>
+                                                <input type="tel" matInput maxlength="10"
+                                                    placeholder="Please enter your mobile number here"
+                                                    formControlName="mobile" />
+                                            </mat-form-field>
+                                        </ng-container>
+
+                                        <ng-container *ngIf="nextForm === true">
+                                            <mat-form-field class="my-1 tl-1 w-100" appearance="outline"
+                                                floatlabel="always">
+                                                <mat-label>Password</mat-label>
+                                                <input matInput [type]="hide ? 'password': 'text'"
+                                                    placeholder="Please enter your password here"
+                                                    formControlName="password">
+
+                                                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                                                    style="vertical-align: super; top: 0.1em;"
+                                                    [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                                                    <mat-icon>{{hide?'visibility_off' : 'visibility'}}
+                                                    </mat-icon>
+                                                </button>
+                                            </mat-form-field>
+
+                                            <mat-form-field class="my-1 tl-1 w-100" appearance="outline"
+                                                floatlabel="always">
+                                                <mat-label> Confirm Password</mat-label>
+                                                <input matInput [type]="confHide? 'password': 'text'"
+                                                    placeholder="Please enter your confirm password here"
+                                                    formControlName="confirm">
+
+                                                <button type="button" mat-icon-button matSuffix
+                                                    (click)="confHide = !confHide"
+                                                    style="vertical-align: super; top: 0.1em;"
+                                                    [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="confHide">
+                                                    <mat-icon>{{confHide?'visibility_off' : 'visibility'}}
+                                                    </mat-icon>
+                                                </button>
+                                            </mat-form-field>
+                                        </ng-container>
+                                    </div>
+
+                                    <!-- NOTE: Put media query for button responsiveness -->
+                                    <div class="my-2 row text-center">
+                                        <div class="col-lg-6 col-md-6 col-sm-2 my-1">
+                                            <button mat-raised-button class="button-color" [disabled]="disableNextBtn"
+                                                (click)="next()" color="primary">
+                                                {{nextForm === false ? 'Next' : 'Previous'}}
+                                            </button>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-2 my-1">
+                                            <button mat-raised-button class="button-color"
+                                                [class]="authForm.invalid ? 'd-none' : ''" [disabled]="authForm.invalid"
+                                                (click)="signup()" color="primary">
+                                                Sign Up
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="row text-center mt-4">
+                                        <a routerLink="">Already Have an Account?</a>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </ng-section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

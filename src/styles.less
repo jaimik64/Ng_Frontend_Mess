@@ -39,14 +39,23 @@ body { margin: 0; font-family: "Poppins"; }
     );
     --navbar-backdrop: #cbbdbd73;
     --container-color: #FFFFFFA3;
-    --table-header-color: "#065baaa3";
-    --table-row-even-color: "#00000047";
-    --table-row-odd-color: "#5E5F7075";
-    --header-color: "#636466";
-    --mat-form-field-color: "#0000001f";
+    --table-header-color: #065baaa3;
+    --table-row-even-color: #00000047;
+    --table-row-odd-color: #5E5F7075;
+    --header-color: #636466;
+    --mat-form-field-color: #0000001f;
+    --button-color: #065baa;
+    // --mat-form-field-color: #065baa;
 }
 
 .mat-form-field-appearance-outline, .mat-form-field-outline, .mat-form-field-label{
     color: var(--mat-form-field-color);
 }
 
+.mat-mdc-raised-button{
+    background-color: var(--button-color);
+}
+
+.mat-butto .mat-primary .mat-button-focus-overlay {
+    background-color: var(--button-color);
+  }

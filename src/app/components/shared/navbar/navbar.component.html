@@ -1,1 +1,122 @@
-<p>navbar works!</p>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" [(opened)]="isExpanded" [fixedInViewport]="true">
+
+        <section class="h-100">
+            <div class="px-2" [style.height]="'67px'">
+                <mat-form-field appearance="outline" class="w-100">
+                    <input matInput (keyup)="filterPages()" placeholder="Search pages...">
+                    <mat-icon matPrefix (click)="searchText = '';filterPages()">search</mat-icon>
+                </mat-form-field>
+            </div>
+            <div [style.height]="'calc(100% - 67px)'" class="overflow-auto">
+                <mat-accordion *ngIf="filteredData.length !== 0;else noMenuFound" [multi]="searchText !== ''">
+                    <ng-container *ngFor="let monoMenu of filteredData;">
+                        <mat-expansion-panel *ngIf="monoMenu.diMenu.length !== 0;else singleLevel"
+                            routerLinkActive="expansion-panel-active">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{monoMenu.name}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <ng-container *ngFor="let diMenu of monoMenu.diMenu;">
+                                <div *ngIf="diMenu.triMenu.length !== 0;else secondLevel">
+                                    <mat-expansion-panel [hideToggle]="diMenu.triMenu.length === 0">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                {{diMenu.name}}
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <div *ngFor="let tri of diMenu.triMenu;" class="second-level-alternative"
+                                            routerLinkActive="second-level-alternative-active">
+                                            <div class="inner-body">
+                                                {{tri.name}}
+                                            </div>
+                                        </div>
+                                    </mat-expansion-panel>
+                                </div>
+                                <ng-template #secondLevel>
+                                    <div class="second-level-alternative"
+                                        routerLinkActive="second-level-alternative-active">
+                                        <div class="inner-body">
+                                            {{diMenu.name}}
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+
+                        </mat-expansion-panel>
+                        <ng-template #singleLevel>
+                            <div class="panel-alternative" routerLinkActive="panel-alternative-active">
+                                <div class="inner-body">
+                                    {{monoMenu.name}}
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </mat-accordion>
+                <ng-template #noMenuFound>
+                    <div class="text-center">
+                        no menu found...
+                    </div>
+                </ng-template>
+            </div>
+        </section>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="left-content d-flex align-items-center">
+                    <mat-icon (click)="sidenav.toggle()" matTooltip="Open menu" matTooltipShowDelay="1000"
+                        aria-label="open menu">
+                        menu</mat-icon>
+                    <ng-section class="d-none d-sm-flex align-items-baseline mt-2">
+                        <span class="product-title">
+                            Mess Eats
+                        </span>
+                        <span class="text-muted product-subtext">
+                            <!-- Warehouse Control System -->
+                        </span>
+                    </ng-section>
+                </div>
+                <div class="right-content d-flex align-items-center">
+                    <!-- <span class="mx-2 align-self-end">
+            <img class="align-top svg-small" matTooltip="Open notifications" matTooltipShowDelay="1000"
+              src="./assets/images/Bell_Notification.svg" alt="notifications">
+          </span> -->
+                    <span class="mx-2 align-self-end d-none d-sm-block">
+                        <!-- <img class="align-top svg-small" [src]="'./assets/images/'+imageType()+'.svg'"
+                            [alt]="imageType()"> -->
+                    </span>
+                    <div class="username d-flex align-items-center mx-4 mx-sm-none" [matMenuTriggerFor]="menu"
+                        #trigger="matMenuTrigger" (click)="trigger.openMenu()">
+                        <div class="user-initials text-uppercase">
+                            JK
+                        </div>
+                        <span class="username-dropdown-container d-none d-sm-block">
+                            <mat-icon class="username-dropdown-icon ">expand_more</mat-icon>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </mat-toolbar>
+        <ng-content></ng-content>
+        <footer class="footer text-center">© Copyright by Mess Eats 2023</footer>
+    </mat-sidenav-content>
+    <mat-menu #menu="matMenu" class="user-menu">
+        <span class="user-info">
+            <span class="h5 mb-0">Jaimik</span>
+            <span>Admin</span>
+        </span>
+        <span>
+            <!-- <button mat-menu-item>
+      <span>Option 1</span>
+    </button> -->
+            <button class="d-block d-sm-none" mat-menu-item>
+                <span>toggle mode</span>
+            </button>
+            <button mat-menu-item (click)="logout()">
+                <span>Logout</span>
+            </button>
+        </span>
+    </mat-menu>

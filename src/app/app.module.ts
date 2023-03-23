@@ -5,20 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/shared/home/home.component';
+import { LoaderComponent } from './components/shared/loader/loader.component';
+import { SharedModule } from './components/shared/shared.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: true
-    }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    // ServiceWorkerModule.register('ngsw-worker.js', {
+    //   enabled: true
+    // }),
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
