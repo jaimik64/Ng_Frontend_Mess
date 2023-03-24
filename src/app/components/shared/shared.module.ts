@@ -34,7 +34,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
       ReactiveFormsModule,
       MatSnackBarModule,
       MatToolbarModule,
-      MatMenuModule
+    MatMenuModule,
+      MatProgressSpinnerModule
     ],
   exports:[LoaderComponent, NavbarComponent, HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
