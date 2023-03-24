@@ -15,6 +15,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 
 @NgModule({
     declarations: [
