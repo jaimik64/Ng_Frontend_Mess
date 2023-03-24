@@ -61,13 +61,12 @@ export class InterceptorService implements HttpInterceptor{
           }
         },
         error: (err: HttpErrorResponse) => {
-          console.log(err);
           
-          if (err.error.message == null) {
+          if (err.error.meta.message == null) {
             this.matSnackbar.open('Something went wrong', 'Try Again')
             console.log('Something went wrong');
           } else {
-            this.matSnackbar.open('Modified Error Message here', 'Try Again')
+            this.matSnackbar.open(err.error.meta.message, 'Try Again')
             console.log('Modified Error Message here');
           }
 
