@@ -21,5 +21,9 @@
     "signup.confPlaceholder": "Please enter your confirm password here",
     "signup.next": "Next",
     "signup.prev": "Previous",
-    "signup.login": "Already Have an Account?"
+    "signup.login": "Already Have an Account?",
+
+    "messLogin": "Mess Log In",
+    "registerMess": "Register as Mess",
+    "loginUser": "Login as User"
 }

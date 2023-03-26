@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService, loginData } from 'src/app/components/auth/auth.service';
+import { languageSelector } from 'src/app/components/auth/login/login.component';
 import { navList } from 'src/app/components/shared/navbar/nav-list';
+import { I18nService } from 'src/app/global-services/i18n.service';
 import { MessService } from '../../mess.service';
 
 @Component({
@@ -11,15 +13,28 @@ import { MessService } from '../../mess.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less']
 })
-export class LoginComponent {
+export class LoginComponent extends I18nService {
   authForm!: FormGroup;
   hide: boolean = true;
   userDetails: loginData = {
     email: '',
     password: ''
   }
+  languages: languageSelector[] = [
+    {
+      type: 'en',
+      label: 'English'
+    },
+    {
+      type: 'hn',
+      label: 'Hindi'
+    },
+  ]
+  selectedLan: string = localStorage.getItem('ln') ?? ''
+
 
   constructor(private formBuilder: FormBuilder, private service: MessService, private snackBar: MatSnackBar, private router: Router) {
+    super()
     if (localStorage.getItem('token') !== null) {
       router.navigate(['/home'])
     }
@@ -63,5 +78,9 @@ export class LoginComponent {
         })
       }
     })
+  }
+
+  changeLan() {
+    this.setLocale(this.selectedLan)
   }
 }
