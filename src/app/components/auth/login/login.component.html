@@ -7,28 +7,29 @@
                 </div>
                 <div class="col-md-5 col-sm-6 col-xs-12 justify-content-evenly d-flex flex-column p-4">
                     <div class="d-flex justify-content-center flex-column">
-                        <span class="product-title">Mess Eats</span>
+                        <span class="product-title">{{i18n('login.p-title')}}</span>
                         <span class="product-subtext"></span>
                     </div>
                     <ng-section>
                         <div class="p-2">
                             <h1 class="title-header">
-                                Log in
+                                {{i18n('login')}}
                             </h1>
                         </div>
                         <div>
                             <form id="login-frm" [formGroup]="authForm">
                                 <div class="form" id="btn">
                                     <mat-form-field class="tl-1 w-100" appearance="outline" floatlabel="always">
-                                        <mat-label>User Email-Id</mat-label>
-                                        <input type="email" email matInput placeholder="Please enter your email id here"
-                                            formControlName="userId" />
+                                        <mat-label>{{i18n('login.emailLabel')}}</mat-label>
+                                        <input type="email" email matInput
+                                            [placeholder]="i18n('login.emailPlaceholder')" formControlName="userId" />
                                     </mat-form-field>
 
                                     <mat-form-field class="my-1 tl-1 w-100" appearance="outline" floatlabel="always">
-                                        <mat-label>Password</mat-label>
+                                        <mat-label>{{i18n('login.passwordLabel')}}</mat-label>
                                         <input matInput [type]="hide ? 'password': 'text'"
-                                            placeholder="Please enter your password here" formControlName="password">
+                                            [placeholder]="i18n('login.passwordPlaceholder')"
+                                            formControlName="password">
 
                                         <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
                                             style="vertical-align: super; top: 0.1em;"
@@ -41,15 +42,26 @@
                                 <div class="my-2 text-center">
                                     <button mat-raised-button class="w-50 button-color" color="primary"
                                         [disabled]="authForm.invalid" (click)="login()">
-                                        Log In
+                                        {{i18n('login')}}
                                     </button>
                                 </div>
 
                                 <div class="row text-center mt-5">
-                                    <a routerLink="signup">Create a New Account</a>
-                                </div>
-                                <div class="row text-center mt-1">
-                                    <a routerLink="/mess/login">Log In as Mess</a>
+                                    <mat-form-field appearance="outline" class="col-lg-6 col-md-6 col-sm-6">
+                                        <mat-label>Change Language</mat-label>
+                                        <mat-select (selectionChange)="changeLan()" [(value)]="selectedLan">
+                                            <mat-option *ngFor="let lan of languages" [value]="lan.type">
+                                                {{lan.label}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <p>
+                                            <a routerLink="signup">{{i18n('login.create')}}</a>
+                                        </p>
+                                        <p>
+                                            <a routerLink="/mess/login">{{i18n('login.loginAsMess')}}</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </form>
                         </div>

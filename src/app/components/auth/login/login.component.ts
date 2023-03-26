@@ -4,21 +4,39 @@ import { AuthService, loginData } from '../auth.service';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { navList } from '../../shared/navbar/nav-list';
+import { I18nService } from 'src/app/global-services/i18n.service';
+
+export interface languageSelector {
+  type: string;
+  label: string;
+}
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends I18nService implements OnInit {
   authForm!: FormGroup;
   hide: boolean = true;
   userDetails: loginData = {
     email: '',
     password: ''
   }
+  languages: languageSelector[] = [
+    {
+      type: 'en',
+      label: 'English'
+    },
+    {
+      type: 'hn',
+      label: 'Hindi'
+    },
+  ]
+  selectedLan: string = localStorage.getItem('ln') ?? ''
 
   constructor(private formBuilder: FormBuilder, private service: AuthService, private snackBar: MatSnackBar, private router: Router) {
+    super()
     if (localStorage.getItem('token') !== null) {
       router.navigate(['/home'])
     }
@@ -62,5 +80,9 @@ export class LoginComponent implements OnInit {
         })
       }
     })
+  }
+
+  changeLan() {
+    this.setLocale(this.selectedLan)
   }
 }

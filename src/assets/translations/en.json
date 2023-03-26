@@ -1,0 +1,25 @@
+{
+    "login.p-title": "Mess Eats",
+    "login": "Log In",
+    "login.emailLabel": "User Email Id",
+    "login.emailPlaceholder": "Please enter your email id here",
+    "login.passwordLabel": "Password",
+    "login.passwordPlaceholder": "Please enter your password here",
+    "login.create": "Create a New Account",
+    "login.loginAsMess": "Log In as Mess",
+
+    "signup": "Sign Up",
+    "signup.name": "User Name",
+    "signup.namePlaceholder": "Please enter your full name here",
+    "signup.mail": "User Email-Id",
+    "signup.mailPlaceholder": "Please enter your email id here",
+    "signup.mob": "Mobile No",
+    "signup.mobPlaceholder": "Please enter your mobile number here",
+    "signup.pass": "Password",
+    "signup.passPlaceholder": "Please enter your password here",
+    "signup.conf": "Confirm Password",
+    "signup.confPlaceholder": "Please enter your confirm password here",
+    "signup.next": "Next",
+    "signup.prev": "Previous",
+    "signup.login": "Already Have an Account?"
+}

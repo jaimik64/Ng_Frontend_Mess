@@ -1,0 +1,26 @@
+{
+    "login.p-title": "मैस ईट्स",
+    "login": "लॉग इन",
+    "login.emailLabel": "उपयोगकर्ता ईमेल आईडी",
+    "login.emailPlaceholder": "कृपया यहां अपनी ईमेल आईडी दर्ज करें",
+    "login.passwordLabel": "पासवर्ड",
+    "login.passwordPlaceholder": "कृपया अपना पासवर्ड यहां दर्ज करें",
+    "login.create": "एक नया खाता बनाएं",
+    "login.loginAsMess": "मेस के रूप में लॉग इन करें",
+
+    "signup": "साइन अप करें",
+    "signup.name": "उपयोगकर्ता नाम",
+    "signup.namePlaceholder": "कृपया अपना पूरा नाम यहां दर्ज करें",
+    "signup.mail": "उपयोगकर्ता ईमेल-आईडी",
+    "signup.mailPlaceholder": "कृपया यहां अपनी ईमेल आईडी दर्ज करें",
+    "signup.mob": "मोबाइल नंबर",
+    "signup.mobPlaceholder": "कृपया यहां अपना मोबाइल नंबर दर्ज करें",
+    "signup.pass": "पासवर्ड",
+    "signup.passPlaceholder": "कृपया अपना पासवर्ड यहां दर्ज करें",
+    "signup.conf": "पासवर्ड की पुष्टि कीजिये",
+    "signup.confPlaceholder": "कृपया अपना पुष्टि पासवर्ड यहां दर्ज करें",
+    "signup.next": "अगला",
+    "signup.prev": "पहले का",
+    "signup.login": "क्या आपके पास पहले से एक खाता मौजूद है?"
+
+}

@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Route, Router } from '@angular/router';
+import { I18nService } from 'src/app/global-services/i18n.service';
 import { AuthService } from '../auth.service';
 
 
@@ -10,7 +11,7 @@ import { AuthService } from '../auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.less']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent extends I18nService implements OnInit {
   // password and confirm password must be match
   authForm!: FormGroup;
   hide: boolean = true
@@ -46,6 +47,7 @@ export class SignupComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder, private service: AuthService, private router: Router, private snackBar: MatSnackBar) {
+    super()
     if (localStorage.getItem('token') !== null) {
       router.navigate(['/home'])
     }

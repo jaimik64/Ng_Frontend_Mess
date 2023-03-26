@@ -7,13 +7,13 @@
                 </div>
                 <div class="col-md-5 col-sm-6 col-xs-12 justify-content-evenly d-flex flex-column p-4">
                     <div class="d-flex justify-content-center flex-column">
-                        <span class="product-title">Mess Eats</span>
+                        <span class="product-title">{{i18n('login.p-title')}}</span>
                         <span class="product-subtext"></span>
                     </div>
                     <ng-section>
                         <div class="p-2">
                             <h1 class="title-header">
-                                Sign Up
+                                {{i18n('signup')}}
                             </h1>
                         </div>
                         <div>
@@ -34,8 +34,8 @@
 
                                                 <mat-form-field class="tl-1 w-100" appearance="outline"
                                                     floatlabel="always">
-                                                    <mat-label>User Name</mat-label>
-                                                    <input matInput placeholder="Please enter your full name here"
+                                                    <mat-label>{{i18n('signup.name')}}</mat-label>
+                                                    <input matInput [placeholder]="i18n('signup.namePlaceholder')"
                                                         formControlName="name" />
                                                 </mat-form-field>
                                             </div>
@@ -50,8 +50,8 @@
                                                 </ng-container> -->
                                                 <mat-form-field class="tl-1 w-100" appearance="outline"
                                                     floatlabel="always">
-                                                    <mat-label>User Email-Id</mat-label>
-                                                    <input matInput email placeholder="Please enter your email id here"
+                                                    <mat-label>{{i18n('signup.mail')}}</mat-label>
+                                                    <input matInput email [placeholder]="i18n('signup.mailPlaceholder')"
                                                         formControlName="email" />
                                                 </mat-form-field>
                                             </div>
@@ -65,9 +65,9 @@
                                                 </ng-container> -->
                                                 <mat-form-field class="tl-1 w-100" appearance="outline"
                                                     floatlabel="always">
-                                                    <mat-label>Mobile No</mat-label>
+                                                    <mat-label>{{i18n('signup.mob')}}</mat-label>
                                                     <input type="tel" matInput maxlength="10"
-                                                        placeholder="Please enter your mobile number here"
+                                                        [placeholder]="i18n('signup.mobPlaceholder')"
                                                         formControlName="mobile" />
                                                 </mat-form-field>
                                             </div>
@@ -79,9 +79,9 @@
                                             <div>
                                                 <mat-form-field class="my-1 tl-1 w-100" appearance="outline"
                                                     floatlabel="always">
-                                                    <mat-label>Password</mat-label>
+                                                    <mat-label>{{i18n('signup.pass')}}</mat-label>
                                                     <input matInput [type]="hide ? 'password': 'text'"
-                                                        placeholder="Please enter your password here"
+                                                        [placeholder]="i18n('signup.passPlaceholder')"
                                                         formControlName="password">
 
                                                     <button type="button" mat-icon-button matSuffix
@@ -104,9 +104,9 @@
                                             <div>
                                                 <mat-form-field class="my-1 tl-1 w-100" appearance="outline"
                                                     floatlabel="always">
-                                                    <mat-label> Confirm Password</mat-label>
+                                                    <mat-label> {{i18n('signup.conf')}}</mat-label>
                                                     <input matInput [type]="confHide? 'password': 'text'"
-                                                        placeholder="Please enter your confirm password here"
+                                                        [placeholder]="i18n('signup.confPlaceholder')"
                                                         formControlName="confirm">
 
                                                     <button type="button" mat-icon-button matSuffix
@@ -135,7 +135,7 @@
                                         <div class="col-lg-6 col-md-6 col-sm-2 my-1">
                                             <button mat-raised-button class="button-color" [disabled]="disableNextBtn"
                                                 (click)="next()" color="primary">
-                                                {{nextForm === false ? 'Next' : 'Previous'}}
+                                                {{nextForm === false ? i18n('signup.next') : i18n('signup.prev')}}
                                             </button>
                                         </div>
 
@@ -143,13 +143,13 @@
                                             <button mat-raised-button class="button-color"
                                                 [class]="authForm.invalid ? 'd-none' : ''" [disabled]="authForm.invalid"
                                                 (click)="signup()" color="primary">
-                                                Sign Up
+                                                {{i18n('signup')}}
                                             </button>
                                         </div>
                                     </div>
 
                                     <div class="row text-center mt-4">
-                                        <a routerLink="">Already Have an Account?</a>
+                                        <a routerLink="">{{i18n('signup.login')}}</a>
                                     </div>
                                 </form>
                             </div>
