@@ -6,5 +6,9 @@ export const environment = {
     // auth
     login: '/auth/signin',
     signup: '/auth/signup',
-    logout: '/auth/signout'
+    logout: '/auth/signout',
+
+    messLogin: '',
+    messSignup: '',
+    messLogout: ''
 };

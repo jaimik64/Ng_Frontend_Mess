@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService, loginData } from '../auth.service';
-import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { navList } from '../../shared/navbar/nav-list';
+import { AuthService, loginData } from 'src/app/components/auth/auth.service';
+import { navList } from 'src/app/components/shared/navbar/nav-list';
+import { MessService } from '../../mess.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   authForm!: FormGroup;
   hide: boolean = true;
   userDetails: loginData = {
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(private formBuilder: FormBuilder, private service: AuthService, private snackBar: MatSnackBar, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private service: MessService, private snackBar: MatSnackBar, private router: Router) {
     if (localStorage.getItem('token') !== null) {
       router.navigate(['/home'])
     }

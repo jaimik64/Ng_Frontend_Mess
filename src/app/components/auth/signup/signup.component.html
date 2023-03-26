@@ -22,57 +22,111 @@
                                 <form id="login-frm" [formGroup]="authForm">
                                     <div class="form" id="btn">
                                         <ng-container *ngIf="nextForm === false">
-                                            <mat-form-field class="tl-1 w-100" appearance="outline" floatlabel="always">
-                                                <mat-label>User Name</mat-label>
-                                                <input matInput placeholder="Please enter your full name here"
-                                                    formControlName="name" />
-                                            </mat-form-field>
 
-                                            <mat-form-field class="tl-1 w-100" appearance="outline" floatlabel="always">
-                                                <mat-label>User Email-Id</mat-label>
-                                                <input matInput email placeholder="Please enter your email id here"
-                                                    formControlName="email" />
-                                            </mat-form-field>
+                                            <div>
+                                                <!-- <ng-container *ngFor="let e of error_msg.name"
+                                                    class="alert alert-danger">
+                                                    <div class="error-msg"
+                                                        *ngIf="authForm.get('name')?.hasError(e.type) && (authForm.get('name')?.dirty || authForm.get('name')?.touched)">
+                                                        {{e.message}}
+                                                    </div>
+                                                </ng-container> -->
 
-                                            <mat-form-field class="tl-1 w-100" appearance="outline" floatlabel="always">
-                                                <mat-label>Mobile No</mat-label>
-                                                <input type="tel" matInput maxlength="10"
-                                                    placeholder="Please enter your mobile number here"
-                                                    formControlName="mobile" />
-                                            </mat-form-field>
+                                                <mat-form-field class="tl-1 w-100" appearance="outline"
+                                                    floatlabel="always">
+                                                    <mat-label>User Name</mat-label>
+                                                    <input matInput placeholder="Please enter your full name here"
+                                                        formControlName="name" />
+                                                </mat-form-field>
+                                            </div>
+
+
+                                            <div>
+                                                <!-- <ng-container *ngFor="let e of error_msg.email">
+                                                    <div class="error-msg"
+                                                        *ngIf="authForm.get('email')?.hasError(e.type) && (authForm.get('email')?.dirty || authForm.get('email')?.touched)">
+                                                        {{e.message}}
+                                                    </div>
+                                                </ng-container> -->
+                                                <mat-form-field class="tl-1 w-100" appearance="outline"
+                                                    floatlabel="always">
+                                                    <mat-label>User Email-Id</mat-label>
+                                                    <input matInput email placeholder="Please enter your email id here"
+                                                        formControlName="email" />
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div>
+                                                <!-- <ng-container *ngFor="let e of error_msg.mobile">
+                                                    <div class="error-msg"
+                                                        *ngIf="authForm.get('mobile')?.hasError(e.type) && (authForm.get('mobile')?.dirty || authForm.get('mobile')?.touched)">
+                                                        {{e.message}}
+                                                    </div>
+                                                </ng-container> -->
+                                                <mat-form-field class="tl-1 w-100" appearance="outline"
+                                                    floatlabel="always">
+                                                    <mat-label>Mobile No</mat-label>
+                                                    <input type="tel" matInput maxlength="10"
+                                                        placeholder="Please enter your mobile number here"
+                                                        formControlName="mobile" />
+                                                </mat-form-field>
+                                            </div>
+
                                         </ng-container>
 
                                         <ng-container *ngIf="nextForm === true">
-                                            <mat-form-field class="my-1 tl-1 w-100" appearance="outline"
-                                                floatlabel="always">
-                                                <mat-label>Password</mat-label>
-                                                <input matInput [type]="hide ? 'password': 'text'"
-                                                    placeholder="Please enter your password here"
-                                                    formControlName="password">
 
-                                                <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
-                                                    style="vertical-align: super; top: 0.1em;"
-                                                    [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
-                                                    <mat-icon>{{hide?'visibility_off' : 'visibility'}}
-                                                    </mat-icon>
-                                                </button>
-                                            </mat-form-field>
+                                            <div>
+                                                <mat-form-field class="my-1 tl-1 w-100" appearance="outline"
+                                                    floatlabel="always">
+                                                    <mat-label>Password</mat-label>
+                                                    <input matInput [type]="hide ? 'password': 'text'"
+                                                        placeholder="Please enter your password here"
+                                                        formControlName="password">
 
-                                            <mat-form-field class="my-1 tl-1 w-100" appearance="outline"
-                                                floatlabel="always">
-                                                <mat-label> Confirm Password</mat-label>
-                                                <input matInput [type]="confHide? 'password': 'text'"
-                                                    placeholder="Please enter your confirm password here"
-                                                    formControlName="confirm">
+                                                    <button type="button" mat-icon-button matSuffix
+                                                        (click)="hide = !hide"
+                                                        style="vertical-align: super; top: 0.1em;"
+                                                        [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                                                        <mat-icon>{{hide?'visibility_off' : 'visibility'}}
+                                                        </mat-icon>
+                                                    </button>
+                                                </mat-form-field>
 
-                                                <button type="button" mat-icon-button matSuffix
-                                                    (click)="confHide = !confHide"
-                                                    style="vertical-align: super; top: 0.1em;"
-                                                    [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="confHide">
-                                                    <mat-icon>{{confHide?'visibility_off' : 'visibility'}}
-                                                    </mat-icon>
-                                                </button>
-                                            </mat-form-field>
+                                                <!-- <ng-container *ngFor="let e of error_msg.password">
+                                                    <div>
+                                                        {{e.message}}
+                                                    </div>
+                                                </ng-container> -->
+
+                                            </div>
+
+                                            <div>
+                                                <mat-form-field class="my-1 tl-1 w-100" appearance="outline"
+                                                    floatlabel="always">
+                                                    <mat-label> Confirm Password</mat-label>
+                                                    <input matInput [type]="confHide? 'password': 'text'"
+                                                        placeholder="Please enter your confirm password here"
+                                                        formControlName="confirm">
+
+                                                    <button type="button" mat-icon-button matSuffix
+                                                        (click)="confHide = !confHide"
+                                                        style="vertical-align: super; top: 0.1em;"
+                                                        [attr.aria-label]="'Hide Password'"
+                                                        [attr.aria-pressed]="confHide">
+                                                        <mat-icon>{{confHide?'visibility_off' : 'visibility'}}
+                                                        </mat-icon>
+                                                    </button>
+
+                                                </mat-form-field>
+
+                                                <!-- <ng-container *ngFor="let error of error_msg.confirm">
+                                                    <div class="error-message">
+                                                        {{ error.message }}
+                                                    </div>
+                                                </ng-container> -->
+                                            </div>
+
                                         </ng-container>
                                     </div>
 

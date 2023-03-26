@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { navContent, navList } from './nav-list';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +13,12 @@ export class NavbarComponent {
   searchText: string = '';
   filteredData: any[] = []
 
-  constructor(private router: Router, private snackBar: MatSnackBar){}
+  constructor(private router: Router, private snackBar: MatSnackBar) {
+    this.filteredData = JSON.parse(localStorage.getItem('Menu') ?? '')
+  }
 
   filterPages() {
-    
+
   }
 
   logout() {

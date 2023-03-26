@@ -1,8 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Route, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -10,12 +11,39 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.less']
 })
 export class SignupComponent implements OnInit {
-
+  // password and confirm password must be match
   authForm!: FormGroup;
   hide: boolean = true
   nextForm: boolean = false
   confHide: boolean = true
   disableNextBtn: boolean = false
+
+  error_msg: any = {
+    'name': [
+      {
+        type: 'required',
+        message: 'User name is required'
+      }
+    ],
+
+    'email': [
+      { type: 'required', message: 'Please enter a valid email address' }
+    ],
+    'mobile': [
+      { type: 'required', message: 'Mobile No. is required' },
+    ],
+    'password': [
+      { type: 'required', message: 'Password is required' },
+      { type: 'minLength', message: 'Password must be 8 Letters or more' },
+      { type: 'maxLength', message: 'Password must be 16 Letters or less' }
+    ],
+    'confirm': [
+      { type: 'required', message: 'Password is required' },
+      { type: 'minLength', message: 'Password must be 8 Letters or more' },
+      { type: 'maxLength', message: 'Password must be 16 Letters or less' }
+    ]
+  }
+
 
   constructor(private formBuilder: FormBuilder, private service: AuthService, private router: Router, private snackBar: MatSnackBar) {
     if (localStorage.getItem('token') !== null) {
@@ -25,16 +53,21 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.authForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      mobile: ['', Validators.required],
-      password: [null, Validators.required],
-      confirm: [null, Validators.required]
-    })
+      name: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      mobile: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]{10}')])],
+      password: [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(16)])],
+      confirm: [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(16)])]
+    }, {
+      validators: this.passwordValidator.bind(this)
+    });
   }
 
-  passwordValidator() {
-    return this.authForm.get('password')?.value === this.authForm.get('confirm')?.value
+  passwordValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password');
+    const conf = formGroup.get('confirm');
+
+    return password?.value === conf?.value ? null : { passwordNotMatch: true }
   }
 
   signup() {

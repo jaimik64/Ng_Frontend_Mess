@@ -8,8 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './components/shared/shared.module';
 import { InterceptorService } from './global-services/interceptor.service';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MessModule } from './components/mess/mess.module';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     SharedModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MessModule
   ],
-  providers: [HttpClientModule, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [HttpClientModule, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

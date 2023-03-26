@@ -11,7 +11,12 @@
             <div [style.height]="'calc(100% - 67px)'" class="overflow-auto">
                 <mat-accordion *ngIf="filteredData.length !== 0;else noMenuFound" [multi]="searchText !== ''">
                     <ng-container *ngFor="let monoMenu of filteredData;">
-                        <mat-expansion-panel *ngIf="monoMenu.diMenu.length !== 0;else singleLevel"
+                        <div class="panel-alternative" routerLinkActive="panel-alternative-active">
+                            <div class="inner-body">
+                                {{monoMenu.name}}
+                            </div>
+                        </div>
+                        <!-- <mat-expansion-panel *ngIf="monoMenu.diMenu.length !== 0;else singleLevel"
                             routerLinkActive="expansion-panel-active">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
@@ -45,14 +50,14 @@
                                 </ng-template>
                             </ng-container>
 
-                        </mat-expansion-panel>
-                        <ng-template #singleLevel>
+                        </mat-expansion-panel> -->
+                        <!-- <ng-template #singleLevel>
                             <div class="panel-alternative" routerLinkActive="panel-alternative-active">
                                 <div class="inner-body">
                                     {{monoMenu.name}}
                                 </div>
                             </div>
-                        </ng-template>
+                        </ng-template> -->
                     </ng-container>
                 </mat-accordion>
                 <ng-template #noMenuFound>
@@ -74,16 +79,10 @@
                         <span class="product-title">
                             Mess Eats
                         </span>
-                        <span class="text-muted product-subtext">
-                            <!-- Warehouse Control System -->
-                        </span>
                     </ng-section>
                 </div>
                 <div class="right-content d-flex align-items-center">
-                    <!-- <span class="mx-2 align-self-end">
-            <img class="align-top svg-small" matTooltip="Open notifications" matTooltipShowDelay="1000"
-              src="./assets/images/Bell_Notification.svg" alt="notifications">
-          </span> -->
+
                     <span class="mx-2 align-self-end d-none d-sm-block">
                         <!-- <img class="align-top svg-small" [src]="'./assets/images/'+imageType()+'.svg'"
                             [alt]="imageType()"> -->
@@ -101,7 +100,7 @@
             </div>
         </mat-toolbar>
         <ng-content></ng-content>
-        <footer class="footer text-center">© Copyright by Mess Eats 2023</footer>
+        <footer class="footer p-3 text-center">© Copyright by Mess Eats 2023</footer>
     </mat-sidenav-content>
     <mat-menu #menu="matMenu" class="user-menu">
         <span class="user-info">
@@ -109,9 +108,6 @@
             <span>Admin</span>
         </span>
         <span>
-            <!-- <button mat-menu-item>
-      <span>Option 1</span>
-    </button> -->
             <button class="d-block d-sm-none" mat-menu-item>
                 <span>toggle mode</span>
             </button>

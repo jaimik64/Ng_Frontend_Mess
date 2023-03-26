@@ -57,8 +57,7 @@
   }
   
   .button-color {
-    width: 100%;
-    background: #065baa;
+    background-color: #065baa;
     color: #fff;
     padding: 0.5%;
     border-radius: 0.55em;
@@ -126,7 +125,7 @@
   }
   
   .img-container {
-    background: url("../../../../assets/images/login-infographics.png");
+    background: url("/assets/images/login-infographics.png");
     background-size: cover;
   }
   
@@ -180,8 +179,7 @@
   }
   
   .button-color {
-    width: 100%;
-    background: #065baa;
+    background-color: #065baa;
     color: #fff;
     padding: 0.5%;
     border-radius: 0.55em;
@@ -249,7 +247,7 @@
   }
   
   .img-container {
-    background: url("../../../../assets/images/login-infographics.png");
+    background: url("/assets/images/login-infographics.png");
     background-size: cover;
     
   }
@@ -276,7 +274,12 @@
     color: #0000001f;
   }
   
-  
+
+  ::ng-deep .mat-mdc-raised-button.button-color{
+    color: #fff;
+    background-color: #065baa;
+  }
+
   a{
     text-decoration: none;
     color: black;
