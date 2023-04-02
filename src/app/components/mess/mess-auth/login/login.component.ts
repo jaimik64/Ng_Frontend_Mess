@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService, loginData } from 'src/app/components/auth/auth.service';
+import { loginData } from 'src/app/components/auth/auth.service';
 import { languageSelector } from 'src/app/components/auth/login/login.component';
 import { navList } from 'src/app/components/shared/navbar/nav-list';
 import { I18nService } from 'src/app/global-services/i18n.service';

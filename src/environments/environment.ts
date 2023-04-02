@@ -8,7 +8,7 @@ export const environment = {
     signup: '/auth/signup',
     logout: '/auth/signout',
 
-    messLogin: '',
-    messSignup: '',
-    messLogout: ''
+    messLogin: '/mesh/auth/signin',
+    messSignup: '/mesh/auth/signup',
+    messLogout: '/mesh/auth/signout'
 };
