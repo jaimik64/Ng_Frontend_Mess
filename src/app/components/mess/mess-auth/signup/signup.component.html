@@ -101,13 +101,15 @@
 
                                         <ng-container *ngIf="showForm === 2">
                                             <mat-form-field appearance="outline" class="w-100">
-                                                <mat-label>Location</mat-label>
-                                                <textarea matInput formControlName="location"></textarea>
+                                                <mat-label>{{i18n('signup.location')}}</mat-label>
+                                                <textarea matInput formControlName="location"
+                                                    [placeholder]="i18n('signup.locationPlaceholder')"></textarea>
                                             </mat-form-field>
 
                                             <mat-form-field appearance="outline" class="w-100">
-                                                <mat-label>City</mat-label>
-                                                <input type="text" matInput formControlName="city">
+                                                <mat-label>{{i18n('signup.city')}}</mat-label>
+                                                <input type="text" matInput formControlName="city"
+                                                    [placeholder]="i18n('signup.cityPlaceholder')">
                                             </mat-form-field>
                                         </ng-container>
                                     </div>
@@ -137,7 +139,7 @@
                                     </div>
 
                                     <div class="row text-center mt-4">
-                                        <a routerLink="">{{i18n('signup.login')}}</a>
+                                        <a routerLink="/mess/auth">{{i18n('signup.login')}}</a>
                                     </div>
                                 </form>
                             </div>

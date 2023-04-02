@@ -22,6 +22,10 @@
     "signup.next": "अगला",
     "signup.prev": "पहले का",
     "signup.login": "क्या आपके पास पहले से एक खाता मौजूद है?",
+    "signup.location": "जगह",
+    "signup.city": "शहर",
+    "signup.locationPlaceholder": "कृपया यहां अपना स्थान दर्ज करें",
+    "signup.cityPlaceholder": "कृपया यहां अपना शहर दर्ज करें",
 
     "messLogin": "मेस लॉग इन ",
     "registerMess": "मेस के रूप में रजिस्टर ",

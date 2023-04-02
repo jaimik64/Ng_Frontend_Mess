@@ -22,6 +22,10 @@
     "signup.next": "Next",
     "signup.prev": "Previous",
     "signup.login": "Already Have an Account?",
+    "signup.location": "Location",
+    "signup.city": "City",
+    "signup.locationPlaceholer": "Please enter your location here",
+    "signup.cityPlaceholder": "Please enter your city here",
 
     "messLogin": "Mess Log In",
     "registerMess": "Register as Mess",

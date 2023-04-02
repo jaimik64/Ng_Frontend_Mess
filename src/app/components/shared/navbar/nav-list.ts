@@ -39,8 +39,20 @@ export const navList: navContent = {
         {
             menuList: [
                 {
-                    action: '/',
+                    action: '/profile',
                     name: 'Profile'
+                },
+                {
+                    action: '/manage-dishes',
+                    name: 'Manage Dishes'
+                },
+                {
+                    action: '/manage-orders',
+                    name: "Manage Orders"
+                },
+                {
+                    action: '/manage-subscriptions',
+                    name: 'Manage Subscriptions'
                 }
             ],
             id: 'Mess'
