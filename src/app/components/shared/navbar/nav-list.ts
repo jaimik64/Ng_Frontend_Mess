@@ -18,7 +18,7 @@ export const navList: navContent = {
             menuList: [
                 {
                     action: '/user/profile',
-                    name: 'Profile'
+                    name: 'Profile',
                 },
                 {
                     action: '/user/home',
@@ -39,19 +39,19 @@ export const navList: navContent = {
         {
             menuList: [
                 {
-                    action: '/profile',
+                    action: '/mess/profile',
                     name: 'Profile'
                 },
                 {
-                    action: '/manage-dishes',
+                    action: '/mess/manage-dishes',
                     name: 'Manage Dishes'
                 },
                 {
-                    action: '/manage-orders',
+                    action: '/mess/manage-orders',
                     name: "Manage Orders"
                 },
                 {
-                    action: '/manage-subscriptions',
+                    action: '/mess/manage-subscriptions',
                     name: 'Manage Subscriptions'
                 }
             ],

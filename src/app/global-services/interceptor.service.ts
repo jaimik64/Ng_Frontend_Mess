@@ -10,12 +10,12 @@ import { LoaderService } from './loader.service';
 @Injectable({
   providedIn: 'root'
 })
-export class InterceptorService implements HttpInterceptor{
+export class InterceptorService implements HttpInterceptor {
 
   private requests: HttpRequest<any>[] = []
   exmptedURL: string[] = []
 
-  constructor(private router : Router, private loaderService: LoaderService, private matSnackbar: MatSnackBar) { }
+  constructor(private router: Router, private loaderService: LoaderService, private matSnackbar: MatSnackBar) { }
 
 
   removeRequest(req: HttpRequest<any>) {
@@ -31,7 +31,7 @@ export class InterceptorService implements HttpInterceptor{
     var accessToken = localStorage.getItem('token') ?? '';
     const headers = new HttpHeaders(
       {
-        'Authorization': (accessToken === null ? '' : accessToken),
+        'Authorization': 'Bearer ' + (accessToken === null ? '' : accessToken),
         'Expires': '0'
       }
     )
@@ -61,7 +61,7 @@ export class InterceptorService implements HttpInterceptor{
           }
         },
         error: (err: HttpErrorResponse) => {
-          
+
           if (err.error.meta.message == null) {
             this.matSnackbar.open('Something went wrong', 'Try Again')
             console.log('Something went wrong');
@@ -84,6 +84,6 @@ export class InterceptorService implements HttpInterceptor{
         subscription.unsubscribe()
       }
     })
-  }      
+  }
 
 }

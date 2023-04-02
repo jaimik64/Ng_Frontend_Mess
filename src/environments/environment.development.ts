@@ -10,5 +10,11 @@ export const environment = {
 
     messLogin: '/mesh/auth/signin',
     messSignup: '/mesh/auth/signup',
-    messLogout: '/mesh/auth/signout'
+    messLogout: '/mesh/auth/signout',
+
+    getDishesByMessId: '/mesh/dishes',
+    getOrdersByMessID: '/mesh/orders',
+    getSubscriptionsByMessId: '/mesh/subscription',
+    getMessUserDetail: '/mesh/user_details',
+    addDishByMess: '/mesh/addDish'
 };

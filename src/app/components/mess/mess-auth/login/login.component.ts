@@ -55,6 +55,7 @@ export class LoginComponent extends I18nService {
       if (res.meta.errorCode === 0) {
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('Menu', JSON.stringify(navList.menu[1].menuList))
+        sessionStorage.setItem('userId', res.data.user._id)
 
         this.snackBar.open('Successfully Logged In!!', 'Ok', {
           horizontalPosition: 'center',
