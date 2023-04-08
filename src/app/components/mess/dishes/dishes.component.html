@@ -16,11 +16,11 @@
             <div class="table-responsive">
 
                 <table mat-table [dataSource]="dataSource" matSort class="table table-hover">
-                    <ng-container matColumnDef="dayname" sticky>
+                    <ng-container matColumnDef="dayname">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Day</th>
                         <td mat-cell *matCellDef="let row">{{row.dayname}}</td>
                     </ng-container>
-                    <ng-container matColumnDef="isLunch" sticky>
+                    <ng-container matColumnDef="isLunch">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
                         <td mat-cell *matCellDef="let row">
                             <span *ngIf="row.isLunch === 0">Lunch</span>
@@ -28,16 +28,16 @@
                             <span *ngIf="row.isLunch === 2">Both</span>
                         </td>
                     </ng-container>
-                    <ng-container matColumnDef="description" sticky>
+                    <ng-container matColumnDef="description">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
                         <td mat-cell *matCellDef="let row">{{row.description}}</td>
                     </ng-container>
-                    <ng-container matColumnDef="rate" sticky>
+                    <ng-container matColumnDef="rate">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
                         <td mat-cell *matCellDef="let row">{{row.rate}}</td>
                     </ng-container>
 
-                    <ng-container matColumnDef="id" sticky>
+                    <ng-container matColumnDef="id">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
                         <td mat-cell *matCellDef="let row">
                             <mat-icon [matMenuTriggerFor]="menu" class="cursor"
@@ -59,7 +59,7 @@
                         </td>
                     </ng-container>
 
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
 
                     <tr class="mat-row" *matNoDataRow>

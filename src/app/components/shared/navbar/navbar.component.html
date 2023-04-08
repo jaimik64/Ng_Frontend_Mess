@@ -18,48 +18,6 @@
                                 {{monoMenu.name}}
                             </div>
                         </div>
-                        <!-- <mat-expansion-panel *ngIf="monoMenu.diMenu.length !== 0;else singleLevel"
-                            routerLinkActive="expansion-panel-active">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    {{monoMenu.name}}
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-
-                            <ng-container *ngFor="let diMenu of monoMenu.diMenu;">
-                                <div *ngIf="diMenu.triMenu.length !== 0;else secondLevel">
-                                    <mat-expansion-panel [hideToggle]="diMenu.triMenu.length === 0">
-                                        <mat-expansion-panel-header>
-                                            <mat-panel-title>
-                                                {{diMenu.name}}
-                                            </mat-panel-title>
-                                        </mat-expansion-panel-header>
-                                        <div *ngFor="let tri of diMenu.triMenu;" class="second-level-alternative"
-                                            routerLinkActive="second-level-alternative-active">
-                                            <div class="inner-body">
-                                                {{tri.name}}
-                                            </div>
-                                        </div>
-                                    </mat-expansion-panel>
-                                </div>
-                                <ng-template #secondLevel>
-                                    <div class="second-level-alternative"
-                                        routerLinkActive="second-level-alternative-active">
-                                        <div class="inner-body">
-                                            {{diMenu.name}}
-                                        </div>
-                                    </div>
-                                </ng-template>
-                            </ng-container>
-
-                        </mat-expansion-panel> -->
-                        <!-- <ng-template #singleLevel>
-                            <div class="panel-alternative" routerLinkActive="panel-alternative-active">
-                                <div class="inner-body">
-                                    {{monoMenu.name}}
-                                </div>
-                            </div>
-                        </ng-template> -->
                     </ng-container>
                 </mat-accordion>
                 <ng-template #noMenuFound>
@@ -84,11 +42,6 @@
                     </ng-section>
                 </div>
                 <div class="right-content d-flex align-items-center">
-
-                    <span class="mx-2 align-self-end d-none d-sm-block">
-                        <!-- <img class="align-top svg-small" [src]="'./assets/images/'+imageType()+'.svg'"
-                            [alt]="imageType()"> -->
-                    </span>
                     <div class="username d-flex align-items-center mx-4 mx-sm-none" [matMenuTriggerFor]="menu"
                         #trigger="matMenuTrigger" (click)="trigger.openMenu()">
                         <div class="user-initials text-uppercase">
