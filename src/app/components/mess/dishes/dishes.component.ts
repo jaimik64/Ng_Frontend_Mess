@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { dish } from '../models';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDishComponent } from './add-dish/add-dish.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dishes',
@@ -16,7 +18,7 @@ import { AddDishComponent } from './add-dish/add-dish.component';
 export class DishesComponent extends I18nService implements OnInit {
 
   dataSource: MatTableDataSource<dish> = new MatTableDataSource()
-  displayedColumns: string[] = ['dayname', 'isLunch', 'description', 'rate']
+  displayedColumns: string[] = ['dayname', 'isLunch', 'description', 'rate', 'id']
 
   @ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
     this.dataSource.paginator = paginator;
@@ -26,7 +28,7 @@ export class DishesComponent extends I18nService implements OnInit {
     this.dataSource.sort = sort
   }
 
-  constructor(private service: MessService, private dialog: MatDialog) {
+  constructor(private service: MessService, private dialog: MatDialog, private snackbar: MatSnackBar) {
     super()
   }
 
@@ -49,12 +51,39 @@ export class DishesComponent extends I18nService implements OnInit {
     }
   }
 
+
+
   addDish() {
     const dialogRef = this.dialog.open(AddDishComponent, {
       height: '75%',
-      width: '90%'
+      width: '80%',
+      data: { title: 'Add', add: true, dish: {} }
     })
 
-    dialogRef.afterClosed().subscribe(() => this.getDishes())
+    dialogRef.afterClosed().subscribe(() => this.getDishes());
+  }
+
+  deleteDish(dishId: string) {
+    this.service.deleteDish(sessionStorage.getItem('userId') ?? '', dishId).subscribe({
+      next: res => {
+        if (res.meta.errorCode === 0) {
+          this.snackbar.open('Dish Deleted', '', { duration: 2000 });
+          this.getDishes();
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+
+      }
+    })
+  }
+
+  updateDish(dishData: dish) {
+    const dialogRef = this.dialog.open(AddDishComponent, {
+      height: "75%",
+      width: "80%",
+      data: { title: "Update", add: false, dish: dishData }
+    })
+
+    dialogRef.afterClosed().subscribe(() => this.getDishes());
   }
 }

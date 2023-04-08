@@ -2,12 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { signupData, loginData } from '../auth/auth.service';
-import { addDishPayload } from './models';
+import { addDishPayload, GenericResponse, updateDishPayload } from './models';
 
-export interface GenericResponse {
-  meta: { errorCode: number, message: string },
-  data: any
-}
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +41,13 @@ export class MessService {
 
   addDish(data: addDishPayload) {
     return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.addDishByMess}/${data.meshuser}`, data)
+  }
+
+  deleteDish(messId: string, dishId: string) {
+    return this.http.delete<GenericResponse>(`${environment.baseUrl}${environment.deleteDishByMess}/${messId}/${dishId}`)
+  }
+
+  updateDish(messId: string, dishId: string, body: updateDishPayload) {
+    return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.updateDishByMess}/${messId}/${dishId}`, body)
   }
 }

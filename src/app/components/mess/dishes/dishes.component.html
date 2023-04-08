@@ -16,11 +16,11 @@
             <div class="table-responsive">
 
                 <table mat-table [dataSource]="dataSource" matSort class="table table-hover">
-                    <ng-container matColumnDef="dayname">
+                    <ng-container matColumnDef="dayname" sticky>
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Day</th>
                         <td mat-cell *matCellDef="let row">{{row.dayname}}</td>
                     </ng-container>
-                    <ng-container matColumnDef="isLunch">
+                    <ng-container matColumnDef="isLunch" sticky>
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
                         <td mat-cell *matCellDef="let row">
                             <span *ngIf="row.isLunch === 0">Lunch</span>
@@ -28,13 +28,35 @@
                             <span *ngIf="row.isLunch === 2">Both</span>
                         </td>
                     </ng-container>
-                    <ng-container matColumnDef="description">
+                    <ng-container matColumnDef="description" sticky>
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
                         <td mat-cell *matCellDef="let row">{{row.description}}</td>
                     </ng-container>
-                    <ng-container matColumnDef="rate">
+                    <ng-container matColumnDef="rate" sticky>
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
                         <td mat-cell *matCellDef="let row">{{row.rate}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="id" sticky>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+                        <td mat-cell *matCellDef="let row">
+                            <mat-icon [matMenuTriggerFor]="menu" class="cursor"
+                                aria-label="Example icon-button with a menu">more_vert
+                            </mat-icon>
+
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="updateDish(row)">
+                                    <mat-icon class="cursor">edit</mat-icon>
+                                    <span>Edit Dish</span>
+                                </button>
+                                <button mat-menu-item (click)="deleteDish(row._id)">
+                                    <mat-icon class="cursor">delete
+                                    </mat-icon>
+                                    <span>Remove Dish</span>
+                                </button>
+                            </mat-menu>
+
+                        </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,6 +1,7 @@
 <div class="p-3 text-center">
-    <div class="row">
-        <h2>Add Dish</h2>
+    <div class="d-flex justify-content-between mb-2">
+        <span class="col-lg-11 col-sm-10 col-md-11 col-xs-10"> {{title}} Dish</span>
+        <span class="cursor col-lg-1 col-sm-2 col-md-2 col-xs-2 ">X</span>
     </div>
     <form [formGroup]="authForm">
 
@@ -38,6 +39,6 @@
             </mat-form-field>
         </div>
 
-        <button mat-raised-button color="primary" (click)="addDish()">Add Dish</button>
+        <button mat-raised-button color="primary" (click)="performAction()">{{title}}</button>
     </form>
 </div>

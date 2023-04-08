@@ -18,3 +18,19 @@ export interface addDishPayload {
     rate: number;
     meshuser: string;
 }
+
+export interface updateDishPayload {
+    dayname: string;
+    isLunch: number;
+    description: string;
+    rate: number;
+}
+
+export interface GenericResponse {
+    meta: { errorCode: number, message: string },
+    data: any
+}
+
+export interface Order {
+
+}
