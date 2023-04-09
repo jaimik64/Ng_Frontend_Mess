@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { signupData, loginData } from '../auth/auth.service';
-import { addDishPayload, GenericResponse, OrderDetailsRes, updateDishPayload } from './models';
+import { addDishPayload, GenericResponse, OrderDetailsRes, SubscriptionRes, updateDishPayload, UserProfile } from './models';
 
 
 @Injectable({
@@ -31,8 +31,8 @@ export class MessService {
     return this.http.post<OrderDetailsRes>(`${environment.baseUrl}${environment.getOrdersByMessID}/${userId}`, { messId: userId })
   }
 
-  getSubscriptionsByMessId(userId: string) {
-    return this.http.get<GenericResponse>(`${environment.baseUrl}${environment.getSubscriptionsByMessId}/${userId}`)
+  getSubscriptionsByMessId(messId: string) {
+    return this.http.get<SubscriptionRes>(`${environment.baseUrl}${environment.getSubscriptionsByMessId}/${messId}`)
   }
 
   getMessUserDetail(userId: string) {
@@ -55,4 +55,7 @@ export class MessService {
     return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.updateOrderStatus}/${messId}/${orderId}`, body)
   }
 
+  updateProfile(messId: string, profileData: UserProfile) {
+    return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.updateMessProfile}/${messId}`, profileData);
+  }
 }

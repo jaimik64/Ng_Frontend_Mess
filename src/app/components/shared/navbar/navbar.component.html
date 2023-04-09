@@ -37,11 +37,21 @@
                         menu</mat-icon>
                     <ng-section class="d-none d-sm-flex align-items-baseline mt-2">
                         <span class="product-title">
-                            Mess Eats
+                            {{i18n('login.p-title')}}
                         </span>
                     </ng-section>
                 </div>
                 <div class="right-content d-flex align-items-center">
+                    <div>
+                        <mat-select (selectionChange)="setLanguage()" [(value)]="lan">
+                            <mat-option value="en">
+                                <img src="../../../../assets/images/en.png" height="40%" width="80%" /> English
+                            </mat-option>
+                            <mat-option value="hn">
+                                <img src="../../../../assets/images/hn.png" height="40%" width="80%" /> Hindi
+                            </mat-option>
+                        </mat-select>
+                    </div>
                     <div class="username d-flex align-items-center mx-4 mx-sm-none" [matMenuTriggerFor]="menu"
                         #trigger="matMenuTrigger" (click)="trigger.openMenu()">
                         <div class="user-initials text-uppercase">
@@ -55,7 +65,7 @@
             </div>
         </mat-toolbar>
         <ng-content></ng-content>
-        <footer class="footer p-3 text-center">© Copyright by Mess Eats 2023</footer>
+        <footer class="footer p-3 text-center">© {{i18n('navbar.footer')}}</footer>
     </mat-sidenav-content>
     <mat-menu #menu="matMenu" class="user-menu">
         <span class="user-info">
@@ -67,7 +77,7 @@
                 <span>toggle mode</span>
             </button>
             <button mat-menu-item (click)="logout()">
-                <span>Logout</span>
+                <span>{{i18n('navbar.logut')}}</span>
             </button>
         </span>
     </mat-menu>

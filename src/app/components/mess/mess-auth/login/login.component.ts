@@ -63,6 +63,7 @@ export class LoginComponent extends I18nService {
         })
         this.router.navigate(['/mess/home'])
       } else {
+        this.router.navigate(['/mess'])
         this.snackBar.open(res.meta.message, 'Ok', {
           horizontalPosition: 'center',
           verticalPosition: 'top'

@@ -45,7 +45,7 @@ export class OrdersComponent extends I18nService implements OnInit {
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     this.dataSource.sort = sort
   }
-  constructor(private service: MessService, private dialog: MatDialog, private snackbar: MatSnackBar, private loaderService: LoaderService) {
+  constructor(private service: MessService, private snackbar: MatSnackBar) {
     super();
   }
 

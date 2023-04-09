@@ -69,3 +69,28 @@ export interface OrderDetailsRes {
     meta: { errorCode: number, message: string };
     data: OrderData[];
 }
+
+export interface SubscriptionData {
+    _id: string;
+    fees: number;
+    toDate: Date;
+    fromDate: Date;
+    paymentId: string;
+    createdAt: Date;
+    userData: UserDataInOrder[];
+    addressData: AddressDataInOrder[];
+    dishData: dish[];
+}
+
+export interface SubscriptionRes {
+    meta: { errorCode: number, message: string };
+    data: SubscriptionData[];
+}
+
+export interface UserProfile {
+    name: string;
+    email: string;
+    mobile: string;
+    location: string;
+    city: string;
+}

@@ -1,2 +1,50 @@
 <app-navbar>
+    <div class="row mt-2 p-2">
+        <div class="block-container">
+            <div class="card p-3 m-5">
+                <form [formGroup]="profileForm">
+                    <div class="row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{i18n('profile.name')}}</mat-label>
+                            <input matInput type="text" formControlName="name"
+                                [placeholder]="i18n('profile.name-placeholder')" />
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{i18n('profile.location')}}</mat-label>
+                            <input matInput type="text" formControlName="location"
+                                [placeholder]="i18n('profile.location-placeholder')" />
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{i18n('profile.city')}}</mat-label>
+                            <input matInput type="text" formControlName="city"
+                                [placeholder]="i18n('profile.city-placeholder')" />
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{i18n('profile.email')}}</mat-label>
+                            <input matInput formControlName="email" [placeholder]="i18n('profile.email-placeholder')" />
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="outline">
+                            <mat-label>{{i18n('profile.mobile')}}</mat-label>
+                            <input matInput type="tel" formControlName="mobile"
+                                [placeholder]="i18n('profile.mobile-placeholder')" />
+                        </mat-form-field>
+                    </div>
+                </form>
+                <div class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-primary"
+                            (click)="updateProfile()">{{i18n('profile.update-btn')}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </app-navbar>
