@@ -18,5 +18,7 @@ export const environment = {
     getMessUserDetail: '/mesh/user_details',
     addDishByMess: '/mesh/addDish',
     deleteDishByMess: '/mesh/removeDish',
-    updateDishByMess: '/mesh/updateDish'
+    updateDishByMess: '/mesh/updateDish',
+    orderDetailsByMess: '/order/orderDetails',
+    updateOrderStatus: '/mesh/updateOrder'
 };

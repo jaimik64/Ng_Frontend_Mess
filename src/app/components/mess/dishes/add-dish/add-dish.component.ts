@@ -62,6 +62,10 @@ export class AddDishComponent extends I18nService implements OnInit {
     }
   }
 
+  dialogClose() {
+    this.dialogRef.close();
+  }
+
   addDish() {
 
     this.addDishpayload = {

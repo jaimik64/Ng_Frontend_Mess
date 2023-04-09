@@ -31,6 +31,41 @@ export interface GenericResponse {
     data: any
 }
 
-export interface Order {
+export interface OrderData {
+    _id: string;
+    payment: string;
+    totalBill: string;
+    status: string;
+    date: string;
+    time: string;
+    settled?: boolean;
+    updateStatus?: boolean;
+    Address: AddressDataInOrder[];
+    dishDetails: DishDataInOrder[];
+    userData: UserDataInOrder[];
+    dishes: [{ qty: number, dishId: string; }]
+}
 
+export interface UserDataInOrder {
+    name: string;
+    email: string;
+    mobile: string;
+}
+
+export interface AddressDataInOrder {
+    name: string;
+    mobile: string;
+    pincode: string;
+    address: string;
+    city: string;
+}
+
+export interface DishDataInOrder extends dish {
+    dishId: string;
+    qty: number;
+}
+
+export interface OrderDetailsRes {
+    meta: { errorCode: number, message: string };
+    data: OrderData[];
 }
