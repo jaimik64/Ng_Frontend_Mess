@@ -20,5 +20,17 @@ export const environment = {
     deleteDishByMess: '/mesh/removeDish',
     updateDishByMess: '/mesh/updateDish',
     updateOrderStatus: '/mesh/updateOrder',
-    updateMessProfile: '/mesh/update'
+    updateMessProfile: '/mesh/update',
+
+    adminGetDishes: '/admin/allDishes',
+    adminGetOrders: '/order/allOrders',
+    adminGetAddresses: '/admin/allAddresses',
+    adminGetUsers: '/admin/getAllUsers',
+    adminGetMess: '/admin/mesh',
+    adminGetSubscriptions: '/admin/subscription',
+    adminUpdateRole: '/admin/updateRole',
+    adminRemoveUser: '/admin/removeUser',
+    adminRemoveMess: '/admin/removeMesh',
+    adminSettleOrders: '/admin/settleOrders',
+    adminSettleSubscriptions: '/admin/settleSubscriptions'
 };

@@ -1,0 +1,56 @@
+<app-navbar>
+    <div class="block-container mt-4 p-2 m-2 justify-content-between">
+        <div class="row my-2 justify-content-between">
+            <div class="col-lg-6 col-md-5 col-sm-6">
+                <mat-form-field appearance="outline" class="w-50">
+                    <mat-label>{{i18n('filter')}}</mat-label>
+                    <input type="text" matInput #input (keyup)="applyFilter($event)" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table mat-table matSort class="table table-hover" [dataSource]="dataSource">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Mess Name</th>
+                    <td mat-cell *matCellDef="let row">{{row.name}}</td>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                    <td mat-cell *matCellDef="let row">{{row.email}}</td>
+                </ng-container>
+                <ng-container matColumnDef="mobile">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</th>
+                    <td mat-cell *matCellDef="let row">{{row.mobile}}</td>
+                </ng-container>
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+                    <td mat-cell *matCellDef="let row">{{row.location}}</td>
+                </ng-container>
+                <ng-container matColumnDef="city">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+                    <td mat-cell *matCellDef="let row">{{row.city}}</td>
+                </ng-container>
+                <ng-container matColumnDef="createdAt">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Creation Date</th>
+                    <td mat-cell *matCellDef="let row">{{row.createdAt | date}}</td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-icon (click)="confirmationBox(row)" class="cursor">delete</mat-icon>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">{{i18n('no-data')}}</td>
+                </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5,10,25]" aria-label="Select page of mess" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+    </div>
+</app-navbar>

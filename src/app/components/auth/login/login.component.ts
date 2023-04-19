@@ -56,16 +56,17 @@ export class LoginComponent extends I18nService implements OnInit {
     this.service.login(this.userDetails).subscribe((res: any) => {
       if (res.meta.errorCode === 0) {
         localStorage.setItem('token', res.data.token)
-        localStorage.setItem('role', res.data.user.role)
+        localStorage.setItem('role', res.data.user.role);
+        sessionStorage.setItem('userId', res.data.user._id);
 
         let role = localStorage.getItem('role');
 
         if (role === "0") {
           localStorage.setItem("Menu", JSON.stringify(navList.menu[0].menuList))
         } else if (role === "1") {
-          localStorage.setItem("Menu", JSON.stringify(navList.menu[1].menuList))
-        } else {
           localStorage.setItem("Menu", JSON.stringify(navList.menu[2].menuList))
+        } else {
+          localStorage.setItem("Menu", JSON.stringify(navList.menu[1].menuList))
         }
 
         this.snackBar.open('Successfully Logged In!!', 'Ok', {

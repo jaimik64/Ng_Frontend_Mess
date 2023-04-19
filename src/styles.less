@@ -1,24 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 
-*{
+* {
     font-family: "Poppins";
 }
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: "Poppins"; }
+html,
+body {
+    height: 100%;
+}
 
-.mat-input-element, .mat-menu-item, .mat-form-field-label-wrapper, .mat-typography{
+body {
+    margin: 0;
+    font-family: "Poppins";
+}
+
+.mat-input-element,
+.mat-menu-item,
+.mat-form-field-label-wrapper,
+.mat-typography {
     font-family: "Poppins" !important;
 }
 
-.container-fluid{
+.container-fluid {
     height: calc(100% - 95px);
     overflow: auto;
 }
 
-.block-container{
+.block-container {
     margin: 0.2em;
     background-color: var(--container-color);
     padding: 0.2%;
@@ -26,17 +36,15 @@ body { margin: 0; font-family: "Poppins"; }
     margin: auto;
 }
 
-:root{
+:root {
     --sidenav-color: #fff;
     --toolbar-color: #fff;
     --text-color: #000;
-    --navbar-border: solid 1px rgba(0,0,0,0.12);
-    --theme-color: linear-gradient(
-        45deg,
-        rgba(185, 209, 231, 1) 0%,
-        rgba(206, 213, 220, 1) 80%,
-        rgba(249, 167, 163, 1) 100%
-    );
+    --navbar-border: solid 1px rgba(0, 0, 0, 0.12);
+    --theme-color: linear-gradient(45deg,
+            rgba(185, 209, 231, 1) 0%,
+            rgba(206, 213, 220, 1) 80%,
+            rgba(249, 167, 163, 1) 100%);
     --navbar-backdrop: #cbbdbd73;
     --container-color: #FFFFFFA3;
     --table-header-color: #065baaa3;
@@ -48,14 +56,20 @@ body { margin: 0; font-family: "Poppins"; }
     // --mat-form-field-color: #065baa;
 }
 
-.mat-form-field-appearance-outline, .mat-form-field-outline, .mat-form-field-label{
+.mat-form-field-appearance-outline,
+.mat-form-field-outline,
+.mat-form-field-label {
     color: var(--mat-form-field-color);
 }
 
-.mat-mdc-raised-button{
+.mat-mdc-raised-button {
     background-color: var(--button-color);
 }
 
 .mat-butto .mat-primary .mat-button-focus-overlay {
     background-color: var(--button-color);
-  }
+}
+
+.cursor {
+    cursor: pointer;
+}
