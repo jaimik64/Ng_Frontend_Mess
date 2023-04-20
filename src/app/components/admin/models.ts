@@ -47,6 +47,7 @@ export interface DishData {
     rate: number;
     meshuser: string;
     meshUser?: MessUserData[];
+    qty?: number;
 }
 
 export interface DishDataResponse {
@@ -81,6 +82,7 @@ export interface OrderData {
     MeshData: MessUserData[];
     Address: AddressData[];
     DishDetails: DishData[];
+    settled?: boolean;
 }
 
 export interface OrderDataResponse {

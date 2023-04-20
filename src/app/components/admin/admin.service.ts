@@ -11,15 +11,15 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getDishDetails(userId: string) {
-    this.http.get<DishDataResponse>(`${environment.baseUrl}${environment.adminGetDishes}/${userId}`);
+    return this.http.get<DishDataResponse>(`${environment.baseUrl}${environment.adminGetDishes}/${userId}`);
   }
 
   getOrderDetails(userId: string) {
-    this.http.get<OrderDataResponse>(`${environment.baseUrl}${environment.adminGetOrders}/${userId}`);
+    return this.http.get<OrderDataResponse>(`${environment.baseUrl}${environment.adminGetOrders}/${userId}`);
   }
 
   getSubscriptionDetails(userId: string) {
-    this.http.get<SubscriptionDataResponse>(`${environment.baseUrl}${environment.adminGetSubscriptions}/${userId}`);
+    return this.http.get<SubscriptionDataResponse>(`${environment.baseUrl}${environment.adminGetSubscriptions}/${userId}`);
   }
 
   getAddressDetails(userId: string) {

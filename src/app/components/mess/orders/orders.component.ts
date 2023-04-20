@@ -55,8 +55,9 @@ export class OrdersComponent extends I18nService implements OnInit {
 
   getOrdersByMessId() {
     this.service.getOrdersByMessId(sessionStorage.getItem('userId') ?? '').subscribe(res => {
-      this.dataSource.data = res.data;
-
+      if (res.meta.errorCode === 0) {
+        this.dataSource.data = res.data;
+      }
     })
   }
 
