@@ -1,3 +1,4 @@
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -11,12 +12,21 @@ import { SubscriptionData } from '../models';
 @Component({
   selector: 'app-manage-subscriptions',
   templateUrl: './manage-subscriptions.component.html',
-  styleUrls: ['./manage-subscriptions.component.less']
+  styleUrls: ['./manage-subscriptions.component.less'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ])
+  ]
 })
 export class ManageSubscriptionsComponent extends I18nService implements OnInit {
 
   dataSource: MatTableDataSource<SubscriptionData> = new MatTableDataSource();
-  displayedColumns: string[] = [];
+  displayedColumns: string[] = ['subscriptionId', 'paymentId', 'toDate', 'fromDate', 'amount', 'settled'];
+  displayedColumnsWithExpand: string[] = [...this.displayedColumns, 'expand'];
+  expandedElement: SubscriptionData | null = null;
 
   @ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
     this.dataSource.paginator = paginator;
@@ -56,5 +66,9 @@ export class ManageSubscriptionsComponent extends I18nService implements OnInit 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  expandView(event: Event) {
+    event.stopPropagation();
   }
 }

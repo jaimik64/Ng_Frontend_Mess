@@ -52,8 +52,6 @@ export class ManageOrdersComponent extends I18nService implements OnInit {
       next: res => {
         if (res.meta.errorCode === 0) {
           this.dataSource.data = res.data;
-          console.log(res.data);
-
         } else {
           this.snackbar.open(res.meta.message, '', { duration: 2000 });
         }

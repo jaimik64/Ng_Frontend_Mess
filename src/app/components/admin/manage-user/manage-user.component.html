@@ -44,7 +44,7 @@
                         <mat-icon (click)="row.updateRole = true" *ngIf="!row.updateRole" class="cursor">edit</mat-icon>
                         <mat-icon (click)="updateRole(row)" *ngIf="row.updateRole" class="cursor">check</mat-icon>
                         <mat-icon (click)="row.updateRole = !row.updateRole" *ngIf="row.updateRole">cancel</mat-icon>
-                        <mat-icon (click)="removeUser(row._id)" class="cursor">delete</mat-icon>
+                        <mat-icon (click)="confirmationBox(row)" class="cursor">delete</mat-icon>
                     </td>
                 </ng-container>
 
