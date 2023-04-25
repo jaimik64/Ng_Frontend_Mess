@@ -21,7 +21,7 @@ export const navList: navContent = {
                     name: 'Profile',
                 },
                 {
-                    action: '/user/home',
+                    action: '/user',
                     name: 'Dashboard'
                 },
                 {
@@ -29,7 +29,7 @@ export const navList: navContent = {
                     name: 'Subscriptions'
                 },
                 {
-                    action: 'user/orders',
+                    action: '/user/orders',
                     name: 'Orders'
                 },
 

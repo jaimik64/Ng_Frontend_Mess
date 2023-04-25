@@ -11,6 +11,7 @@ import { InterceptorService } from './global-services/interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MessModule } from './components/mess/mess.module';
+import { UserModule } from './components/user/user.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MessModule } from './components/mess/mess.module';
     SharedModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MessModule
+    MessModule,
+    UserModule
   ],
   providers: [HttpClientModule, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]

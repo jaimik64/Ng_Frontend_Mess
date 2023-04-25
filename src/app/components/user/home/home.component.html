@@ -1,0 +1,24 @@
+<div class="p-1">
+    <div class="box">
+
+    </div>
+    <div class="card w-100 h-15 p-3 my-1" *ngFor="let mess of messData">
+        <span class="d-flex h5">
+            <span class="col-11">
+                {{mess.name}}
+            </span>
+            <span class="col-1">
+                <mat-icon (click)="call(mess)">call</mat-icon>
+            </span>
+        </span>
+        <span class="d-flex">
+            {{mess.location}}, {{mess.city}}
+        </span>
+        <span class="d-flex mt-3 text-center">
+            <span class="col-12">
+                <mat-icon (click)="viewDishes(mess)">navigate_next</mat-icon>
+            </span>
+        </span>
+    </div>
+    <app-bottom-nav></app-bottom-nav>
+</div>

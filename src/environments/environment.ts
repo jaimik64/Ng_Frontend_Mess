@@ -8,6 +8,7 @@ export const environment = {
     signup: '/auth/signup',
     logout: '/auth/signout',
 
+    // mess
     messLogin: '/mesh/auth/signin',
     messSignup: '/mesh/auth/signup',
     messLogout: '/mesh/auth/signout',
@@ -22,6 +23,8 @@ export const environment = {
     updateOrderStatus: '/mesh/updateOrder',
     updateMessProfile: '/mesh/update',
 
+
+    // admin
     adminGetDishes: '/admin/allDishes',
     adminGetOrders: '/order/allOrders',
     adminGetAddresses: '/admin/allAddresses',
@@ -32,5 +35,9 @@ export const environment = {
     adminRemoveUser: '/admin/removeUser',
     adminRemoveMess: '/admin/removeMesh',
     adminSettleOrders: '/admin/settleOrders',
-    adminSettleSubscriptions: '/admin/settleSubscriptions'
+    adminSettleSubscriptions: '/admin/settleSubscriptions',
+
+    // user
+    UserGetMessDetails: '/users/meshes',
+    UserGetDishesByMessId: '/users/mesh/dishes'
 };

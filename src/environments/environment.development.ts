@@ -32,5 +32,9 @@ export const environment = {
     adminRemoveUser: '/admin/removeUser',
     adminRemoveMess: '/admin/removeMesh',
     adminSettleOrders: '/admin/settleOrders',
-    adminSettleSubscriptions: '/admin/settleSubscriptions'
+    adminSettleSubscriptions: '/admin/settleSubscriptions',
+
+    // user
+    UserGetMessDetails: '/users/meshes',
+    UserGetDishesByMessId: '/users/mesh/dishes'
 };

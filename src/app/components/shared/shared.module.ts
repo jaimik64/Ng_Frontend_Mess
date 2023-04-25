@@ -17,12 +17,14 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
+import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     HomeComponent,
-    LoaderComponent
+    LoaderComponent,
+    BottomNavComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,7 @@ import { RouterModule } from '@angular/router';
     MatMenuModule,
     MatProgressSpinnerModule
   ],
-  exports: [LoaderComponent, NavbarComponent, HomeComponent],
+  exports: [LoaderComponent, NavbarComponent, HomeComponent, BottomNavComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

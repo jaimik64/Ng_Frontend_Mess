@@ -1,0 +1,45 @@
+<div class="p-1">
+    <div class="box p-3">
+        <span class="row h4">
+            {{mess.name}}
+        </span>
+        <span class="row d-flex h6">
+            {{mess.location}}
+        </span>
+    </div>
+
+    <div class="card w-100 h-15 p-3 my-1" *ngFor="let dish of dishData">
+
+        <div class="row d-flex">
+            <div class="col-8">
+                <span class="d-flex h5">
+                    {{dish.dayname}}
+                </span>
+                <span class="d-flex justify-content-start">
+                    <span class="col-8">
+                        {{dish.description}}
+                    </span>
+                </span>
+                <span class="d-flex justify-content-start my-1">
+                    <span class="col-4">
+                        ₹ {{dish.rate}} /-
+                    </span>
+                </span>
+            </div>
+            <div class="col-4 vertical-align-center">
+                <span class="row d-flex justify-content-center">
+                    <span class="col-1">
+                        <mat-icon>remove</mat-icon>
+                    </span>
+                    <span class="col-6">Add</span>
+                    <span class="col-1">
+                        <mat-icon>add</mat-icon>
+                    </span>
+                </span>
+            </div>
+        </div>
+
+
+    </div>
+    <app-bottom-nav></app-bottom-nav>
+</div>
