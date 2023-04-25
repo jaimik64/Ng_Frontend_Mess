@@ -23,6 +23,7 @@ export interface DishData {
     isLunch: number;
     rate: number;
     description: string;
+    qty?: number;
 }
 
 export interface MessDetailsResponse {

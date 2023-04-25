@@ -1,14 +1,8 @@
-<div class="p-1">
-    <div class="box p-3">
-        <span class="row h4">
-            {{mess.name}}
-        </span>
-        <span class="row d-flex h6">
-            {{mess.location}}
-        </span>
-    </div>
-
-    <div class="card w-100 h-15 p-3 my-1" *ngFor="let dish of dishData">
+<span class="d-flex text-center justify-content-center">
+    <mat-icon (click)="close()" class="border">close</mat-icon>
+</span>
+<div class="block-container">
+    <div class="card w-100 h-15 p-3 my-1" *ngFor="let dish of cartItems">
 
         <div class="row d-flex">
             <div class="col-8">
@@ -44,13 +38,4 @@
         </div>
     </div>
 
-    <div class="fixed-bottom">
-        <span class="h5 d-flex justify-content-center" (click)="openBottomSheet()" *ngIf="cart.length >= 1">
-            <span class="col-6">{{totalItemsCount()}} Items Added</span>
-            <span class="col-6">
-                <button class="btn btn-primary w-25">Next</button>
-            </span>
-        </span>
-        <app-bottom-nav></app-bottom-nav>
-    </div>
 </div>

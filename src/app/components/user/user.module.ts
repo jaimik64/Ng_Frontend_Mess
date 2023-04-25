@@ -18,7 +18,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
-import { DishesComponent } from './dishes/dishes.component';
+import { CartBottomSheetComponent, DishesComponent } from './dishes/dishes.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { DishesComponent } from './dishes/dishes.component';
     OrderComponent,
     HomeComponent,
     SubscriptionsComponent,
-    DishesComponent
+    DishesComponent,
+    CartBottomSheetComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,9 @@ import { DishesComponent } from './dishes/dishes.component';
     MatFormFieldModule,
     FormsModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatBottomSheetModule,
+    MatListModule
   ]
 })
 export class UserModule { }

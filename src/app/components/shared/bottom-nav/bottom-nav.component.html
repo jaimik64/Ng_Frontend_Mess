@@ -1,6 +1,7 @@
-<div class="fixed-bottom bg-white row d-flex justify-content-center text-center border-top p-4">
+<div class="bg-white row d-flex justify-content-center text-center border-top p-3">
     <div class="col-3">
-        <mat-icon (click)="router.navigateByUrl('/user')" [class]="router.url === '/user' ? 'activate' : 'deactivate' ">
+        <mat-icon (click)="router.navigateByUrl('/user')"
+            [class]="router.url === '/user' || router.url === '/user/dishes' ? 'activate' : 'deactivate' ">
             home</mat-icon>
     </div>
     <div class="col-3">
