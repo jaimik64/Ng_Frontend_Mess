@@ -45,10 +45,11 @@
     </div>
 
     <div class="fixed-bottom">
-        <span class="h5 d-flex justify-content-center" (click)="openBottomSheet()" *ngIf="cart.length >= 1">
+        <span class="h5 d-flex justify-content-between text-center" (click)="openBottomSheet()"
+            *ngIf="cart.length >= 1">
             <span class="col-6">{{totalItemsCount()}} Items Added</span>
             <span class="col-6">
-                <button class="btn btn-primary w-25">Next</button>
+                <button class="btn btn-primary text-end">Next</button>
             </span>
         </span>
         <app-bottom-nav></app-bottom-nav>
