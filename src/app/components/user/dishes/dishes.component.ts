@@ -49,6 +49,11 @@ export class DishesComponent extends I18nService implements OnInit {
     this.service.getDishDetailsByMessId(sessionStorage.getItem('userId') ?? '').subscribe({
       next: res => {
         if (res.meta.errorCode === 0) {
+          res.data.forEach((data) => {
+            if (this.service.itemAvailableInCart(data)) {
+              data.qty = this.service.dishData(data)?.qty;
+            }
+          });
           this.dishData = res.data;
         } else {
           this.snackbar.open(res.meta.message, '', { duration: 2000 });
@@ -58,30 +63,26 @@ export class DishesComponent extends I18nService implements OnInit {
         this.snackbar.open(err.error.meta.message, '', { duration: 2000 });
       }
     });
-    this.updateQty();
-  }
-
-  updateQty() {
-    let temp = this.dishData.map((data) => {
-      if (this.service.itemAvailableInCart(data)) {
-        let tempDish = this.service.dishData(data);
-        data.qty = tempDish?.qty;
-        return data;
-      } else {
-        return data;
-      }
-    });
-    this.dishData = temp;
   }
 
   removeItem(dish: DishData) {
     this.service.removeItemFromCart(dish);
     this.cart = this.service.cart;
+    this.dishData.forEach((data) => {
+      if (this.service.itemAvailableInCart(data)) {
+        data.qty = this.service.dishData(data)?.qty;
+      }
+    })
   }
 
   addItem(dish: DishData) {
     this.service.addItemInCart(dish);
     this.cart = this.service.cart;
+    this.dishData.forEach((data) => {
+      if (this.service.itemAvailableInCart(data)) {
+        data.qty = this.service.dishData(data)?.qty;
+      }
+    })
   }
 
   itemAvailableInCart(dish: DishData) {

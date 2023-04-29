@@ -47,8 +47,8 @@
         </div>
     </div>
 
-    <div class="fixed-bottom bg-white p-2">
-        <span class="h5 d-flex justify-content-between text-center" (click)="openBottomSheet()"
+    <div class="fixed-bottom bg-white">
+        <span class="h5 d-flex p-2 justify-content-between text-center" (click)="openBottomSheet()"
             *ngIf="cart.length >= 1">
             <span class="col-6" *ngIf="!isBottomSheetOpened">
                 {{totalItemsCount()}} Item(s) Added
