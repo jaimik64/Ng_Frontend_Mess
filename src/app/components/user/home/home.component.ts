@@ -44,6 +44,7 @@ export class HomeComponent extends I18nService implements OnInit {
 
   viewDishes(selectedMess: MessData) {
     this.service.selectedMess = selectedMess;
+    this.service.isMessChanged = true;
     this.router.navigateByUrl(`/user/dishes`);
   }
 }

@@ -10,6 +10,7 @@ export class UserService {
   messId: string = '';
   selectedMess: MessData | null = null;
   cart: DishData[] = [];
+  isMessChanged: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -21,23 +22,28 @@ export class UserService {
     return this.http.get<DishDataResponse>(`${environment.baseUrl}${environment.UserGetDishesByMessId}/${userId}/${this.selectedMess?._id}`);
   }
 
-  addItemInCart(dish: DishData, itemAdded: boolean) {
-
-    if (itemAdded) {
-      this.cart.forEach(data => {
-        if (data._id === dish._id) {
-          if (data.qty !== undefined) {
-            data.qty = data.qty + 1;
-          }
-        }
-      })
-    } else {
+  addItemInCart(dish: DishData) {
+    if (this.isMessChanged) {
+      this.cart = [];
       dish.qty = 1;
       this.cart?.push(dish);
+      this.isMessChanged = false
+    } else {
+      if (this.itemAvailableInCart(dish)) {
+        this.cart.forEach(data => {
+          if (data._id === dish._id) {
+            if (data.qty !== undefined) {
+              data.qty = data.qty + 1;
+            }
+          }
+        })
+      } else {
+        dish.qty = 1;
+        this.cart?.push(dish);
+      }
     }
 
     console.log(this.cart);
-
   }
 
   removeItemFromCart(dish: DishData) {
@@ -63,4 +69,39 @@ export class UserService {
 
   }
 
+  itemAvailableInCart(dish: DishData) {
+    if (this.cart.length === 0) {
+      return false;
+    } else {
+      let itemAdded: boolean = false;
+
+      this.cart.forEach((item) => {
+        if (item._id === dish._id) {
+          itemAdded = true;
+        }
+      });
+      return itemAdded;
+    }
+  }
+
+  totalItemsCount() {
+    let count = 0;
+
+    this.cart.forEach((data) => {
+      if (data.qty !== undefined) {
+        count = count + data.qty;
+      }
+    });
+
+    return count;
+  }
+
+  dishData(dish: DishData) {
+    for (let i = 0; i < this.cart.length; i++) {
+      if (dish._id === this.cart[i]._id) {
+        return this.cart[i];
+      }
+    }
+    return;
+  }
 }

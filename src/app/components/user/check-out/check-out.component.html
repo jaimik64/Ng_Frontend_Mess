@@ -1,10 +1,11 @@
-<span class="d-flex text-center justify-content-center">
-    <mat-icon (click)="close()" class="border">close</mat-icon>
-</span>
-<span class="d-flex text-start">
-    <span class="h5">{{totalItemsCount()}} Item(s) Added</span>
-</span>
-<div class="block-container mb-5">
+<div class="p-1">
+    <div class="box p-3">
+        <span class="row h4">
+            {{mess.name}}
+        </span>
+    </div>
+
+    {{totalItems() === 1 ? '' : ''}}
     <div class="card w-100 h-15 p-3 my-1" *ngFor="let dish of cartItems">
 
         <div class="row d-flex">
@@ -40,7 +41,9 @@
             </div>
         </div>
     </div>
+
+    <div class="container card">
+        <span (click)="addMore()">Add more items</span>
+    </div>
+
 </div>
-<span class="d-flex my-2 justify-content-end">
-    <button class="mx-3 btn btn-primary text-end" (click)="checkout()">Next</button>
-</span>

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { Component, Inject, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { I18nService } from 'src/app/global-services/i18n.service';
@@ -24,6 +24,7 @@ export class DishesComponent extends I18nService implements OnInit {
     location: '',
     city: ''
   }
+  isBottomSheetOpened: boolean = false;
 
   constructor(private service: UserService, private snackbar: MatSnackBar, private router: Router, private _bottomSheet: MatBottomSheet) {
     super();
@@ -43,6 +44,7 @@ export class DishesComponent extends I18nService implements OnInit {
     this.getData();
   }
 
+  // TODO: Fix dish Details when it routed back to this component
   getData() {
     this.service.getDishDetailsByMessId(sessionStorage.getItem('userId') ?? '').subscribe({
       next: res => {
@@ -55,7 +57,21 @@ export class DishesComponent extends I18nService implements OnInit {
       error: (err: HttpErrorResponse) => {
         this.snackbar.open(err.error.meta.message, '', { duration: 2000 });
       }
-    })
+    });
+    this.updateQty();
+  }
+
+  updateQty() {
+    let temp = this.dishData.map((data) => {
+      if (this.service.itemAvailableInCart(data)) {
+        let tempDish = this.service.dishData(data);
+        data.qty = tempDish?.qty;
+        return data;
+      } else {
+        return data;
+      }
+    });
+    this.dishData = temp;
   }
 
   removeItem(dish: DishData) {
@@ -64,39 +80,23 @@ export class DishesComponent extends I18nService implements OnInit {
   }
 
   addItem(dish: DishData) {
-    this.service.addItemInCart(dish, this.itemAvailableInCart(dish));
+    this.service.addItemInCart(dish);
     this.cart = this.service.cart;
   }
 
   itemAvailableInCart(dish: DishData) {
-    if (this.cart.length === 0) {
-      return false;
-    } else {
-      let itemAdded: boolean = false;
-
-      this.cart.forEach((item) => {
-        if (item._id === dish._id) {
-          itemAdded = true;
-        }
-      });
-      return itemAdded;
-    }
+    return this.service.itemAvailableInCart(dish);
   }
 
   totalItemsCount() {
-    let count = 0;
-
-    this.cart.forEach((data) => {
-      if (data.qty !== undefined) {
-        count = count + data.qty
-      }
-    });
-
-    return count;
+    return this.service.totalItemsCount();
   }
 
   openBottomSheet() {
-    this._bottomSheet.open(CartBottomSheetComponent);
+    this.isBottomSheetOpened = true;
+    this._bottomSheet.open(CartBottomSheetComponent, { disableClose: true, data: this.totalItemsCount() }).afterDismissed().subscribe(data => {
+      this.isBottomSheetOpened = data.status;
+    });
   }
 }
 
@@ -108,41 +108,49 @@ export class DishesComponent extends I18nService implements OnInit {
 export class CartBottomSheetComponent extends I18nService implements OnInit {
 
   cartItems: DishData[] = [];
+  totalItems: number = 0;
 
-  constructor(private _bottomSheetRef: MatBottomSheetRef<CartBottomSheetComponent>, private service: UserService) {
-    super()
+  constructor(private _bottomSheetRef: MatBottomSheetRef<CartBottomSheetComponent>, private service: UserService, @Inject(MAT_BOTTOM_SHEET_DATA) public data: any, private router: Router) {
+    super();
   }
 
   ngOnInit(): void {
     this.cartItems = this.service.cart;
   }
 
+  totalItemsCount() {
+    return this.service.totalItemsCount();
+  }
+
+  clearAll() {
+    this.cartItems = [];
+    this.service.cart = [];
+    this.close();
+  }
+
   close() {
-    this._bottomSheetRef.dismiss();
+    this._bottomSheetRef.dismiss({ status: false });
   }
 
   removeItem(dish: DishData) {
     this.service.removeItemFromCart(dish);
     this.cartItems = this.service.cart;
+    if (this.totalItemsCount() === 0) {
+      this.close();
+    }
   }
 
   addItem(dish: DishData) {
-    this.service.addItemInCart(dish, this.itemAvailableInCart(dish));
+    this.service.addItemInCart(dish);
     this.cartItems = this.service.cart;
   }
 
   itemAvailableInCart(dish: DishData) {
-    if (this.cartItems.length === 0) {
-      return false;
-    } else {
-      let itemAdded: boolean = false;
+    return this.service.itemAvailableInCart(dish);
+  }
 
-      this.cartItems.forEach((item) => {
-        if (item._id === dish._id) {
-          itemAdded = true;
-        }
-      });
-      return itemAdded;
-    }
+  checkout() {
+    this.close();
+    this.router.navigateByUrl('/user/checkout');
   }
 }

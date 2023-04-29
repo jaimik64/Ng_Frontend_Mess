@@ -21,6 +21,7 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { CartBottomSheetComponent, DishesComponent } from './dishes/dishes.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MatListModule } from '@angular/material/list';
     HomeComponent,
     SubscriptionsComponent,
     DishesComponent,
-    CartBottomSheetComponent
+    CartBottomSheetComponent,
+    CheckOutComponent
   ],
   imports: [
     CommonModule,
