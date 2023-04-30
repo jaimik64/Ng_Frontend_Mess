@@ -13,9 +13,16 @@ import { UserService } from '../../user.service';
 export class AddAddressComponent extends I18nService implements OnInit {
 
   isEdit: boolean = false;
+  title: string = '';
 
   constructor(private service: UserService, private formBuilder: FormBuilder, private dialogRef: MatDialogRef<AddAddressComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     super();
+    this.isEdit = data.isEdit;
+    if (this.isEdit) {
+      this.title = 'Edit'
+    } else {
+      this.title = 'Add'
+    }
   }
 
   ngOnInit() {
@@ -27,6 +34,10 @@ export class AddAddressComponent extends I18nService implements OnInit {
   }
 
   updateAddress() {
+
+  }
+
+  dialogClose() {
 
   }
 }

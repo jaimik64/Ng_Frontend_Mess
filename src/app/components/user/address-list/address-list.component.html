@@ -17,19 +17,24 @@
         Saved addresses
     </span>
 
-    <div class="p-2 card my-2" *ngFor="let address of addresses">
-        <div class="row d-flex">
-            <div class="col-3 text-center">
-                <mat-icon>location_on</mat-icon>
-            </div>
-            <div class="col-9">
-                <div class="row">
-                    {{address.name}}
+    <ng-container *ngFor="let address of addresses">
+        <div class="p-2 card my-2"
+            [class]="selectedAddress._id === address._id ? 'bg-secondary text-white' : 'bg-white'"
+            (click)="selectAddress(address)">
+            <div class="row d-flex">
+                <div class="col-3 text-center">
+                    <mat-icon>location_on</mat-icon>
                 </div>
-                <div class="row">
-                    {{address.address}}, {{address.city}}
+                <div class="col-9">
+                    <div class="row">
+                        {{address.name}}
+                    </div>
+                    <div class="row">
+                        {{address.address}}, {{address.city}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </ng-container>
+
 </div>

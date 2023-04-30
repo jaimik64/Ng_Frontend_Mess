@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { I18nService } from 'src/app/global-services/i18n.service';
 import { AddressListComponent } from '../address-list/address-list.component';
-import { DishData, MessData } from '../models';
+import { AddressData, DishData, MessData } from '../models';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.less']
 })
-export class CheckOutComponent extends I18nService implements OnInit {
+export class CheckOutComponent extends I18nService implements OnChanges {
 
   mess: MessData = {
     _id: '',
@@ -24,6 +24,14 @@ export class CheckOutComponent extends I18nService implements OnInit {
   };
   cartItems: DishData[] = [];
   isBottomSheetOpened: boolean = false;
+  selectedAddress: AddressData = {
+    _id: '',
+    name: '',
+    mobile: '',
+    pincode: '',
+    address: '',
+    city: ''
+  }
 
   constructor(private service: UserService, private snackbar: MatSnackBar, private router: Router, private _bottomSheet: MatBottomSheet) {
     super();
@@ -31,17 +39,24 @@ export class CheckOutComponent extends I18nService implements OnInit {
     if (this.service.selectedMess !== null) {
       this.mess = this.service.selectedMess;
     } else {
-      // this.router.navigateByUrl('/user');
-      // this.snackbar.open('Please Add Dishes', '', { duration: 2000, verticalPosition: 'top' });
+      this.router.navigateByUrl('/user');
+      this.snackbar.open('Please Add Dishes', '', { duration: 2000, verticalPosition: 'top' });
     }
 
     if (this.service.cart !== null) {
       this.cartItems = this.service.cart;
     }
+
+    if (this.service.selectedAddress !== null) {
+      this.selectedAddress = this.service.selectedAddress;
+    }
   }
 
-  ngOnInit() {
-
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.service.selectedAddress !== null) {
+      this.selectedAddress = this.service.selectedAddress;
+      console.log(this.selectedAddress);
+    }
   }
 
   removeItem(dish: DishData) {
@@ -88,6 +103,7 @@ export class CheckOutComponent extends I18nService implements OnInit {
 
     this._bottomSheet.open(AddressListComponent, { disableClose: true }).afterDismissed().subscribe((data) => {
       this.isBottomSheetOpened = data.status;
+      this.selectedAddress = data.selectedAddress;
     })
   }
 }
