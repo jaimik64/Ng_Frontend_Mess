@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AddressData, AddressResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse } from './models';
+import { AddressData, AddressDataPayload, AddressResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -106,16 +106,15 @@ export class UserService {
     return this.http.get<AddressResponse>(`${environment.baseUrl}${environment.UserGetAddresses}/${userId}`);
   }
 
-  updateAddress(userId: string, addressId: string) {
-    // TODO: Add Address Data
-    return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.UserUpdateAddress}/${userId}/${addressId}`, {});
+  updateAddress(userId: string, addressId: string, address: AddressDataPayload) {
+    return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.UserUpdateAddress}/${userId}/${addressId}`, address);
   }
 
   removeAddress(userId: string, addressId: string) {
     return this.http.delete<GenericResponse>(`${environment.baseUrl}${environment.UserRemoveAddress}/${userId}/${addressId}`);
   }
 
-  addAddress(userId: string) {
-    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserAddAddress}/${userId}`, {});
+  addAddress(userId: string, address: AddressDataPayload) {
+    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserAddAddress}/${userId}`, address);
   }
 }

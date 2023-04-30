@@ -1,112 +1,115 @@
-<div class="p-1 h-100 bg-blue">
-    <div class="box p-3">
-        <span class="row h4">
-            {{mess.name}}
-        </span>
-    </div>
-
-    {{totalItems() === 1 ? '' : ''}}
-    <div class="row d-flex justify-content-center text-center">
-        <div class="col-4">
-            <hr />
-        </div>
-        <div class="col-4">
-            Item(s) Added
-        </div>
-        <div class="col-4">
-            <hr />
-        </div>
-    </div>
-    <div class="block-container my-1">
-        <div class=" w-100 h-15 p-3 " *ngFor="let dish of cartItems">
-            <div class="row d-flex">
-                <div class="col-8">
-                    <span class="d-flex h5">
-                        {{dish.dayname}}
-                    </span>
-                    <span class="d-flex justify-content-start">
-                        <span class="col-8">
-                            {{dish.description}}
-                        </span>
-                    </span>
-                    <span class="d-flex justify-content-start my-1">
-                        <span class="col-4">
-                            ₹ {{dish.rate}} /-
-                        </span>
-                    </span>
-                </div>
-                <div class="col-4 vertical-align-center">
-                    <span class="d-flex justify-content-center text-center p-2 button-grp">
-                        <span class="col-2">
-                            <mat-icon style="font-size: 1.3rem" (click)="removeItem(dish)"
-                                *ngIf="itemAvailableInCart(dish)">
-                                remove</mat-icon>
-                        </span>
-                        <span class="col-6" *ngIf="!itemAvailableInCart(dish)" (click)="addItem(dish)">Add</span>
-                        <span class="col-6" *ngIf="itemAvailableInCart(dish)">{{dish.qty}}</span>
-                        <span class="col-2">
-                            <mat-icon style="font-size: 1.3rem" (click)="addItem(dish)"
-                                *ngIf="itemAvailableInCart(dish)">
-                                add</mat-icon>
-                        </span>
-                    </span>
-                    <span class="d-flex justify-content-center">
-                        <span *ngIf="dish.qty !== undefined">₹ {{dish.qty * dish.rate}}</span>
-                    </span>
-                </div>
-            </div>
+<div class=" h-100 bg-blue">
+    <div class="p-1 pb-30 mb-30 ">
+        <div class="box p-3">
+            <span class="row h4">
+                {{mess.name}}
+            </span>
         </div>
 
-    </div>
-
-    <div class="container card p-2">
-        <span (click)="addMore()">Add more items</span>
-    </div>
-
-    <div class="my-1">
-        <div class="d-flex justify-content-center text-center">
+        {{totalItems() === 1 ? '' : ''}}
+        <div class="row d-flex justify-content-center text-center">
             <div class="col-4">
                 <hr />
             </div>
             <div class="col-4">
-                Bill Summary
+                Item(s) Added
             </div>
             <div class="col-4">
                 <hr />
             </div>
         </div>
-
-        <div class="block-container p-2">
-            <div class="d-flex">
-                <div class="col-9 text-start">
-                    Subtotal
-                </div>
-                <div class="col-3 text-end">
-                    ₹ {{subTotalBill()}}
+        <div class="block-container my-1">
+            <div class=" w-100 h-15 p-3 " *ngFor="let dish of cartItems">
+                <div class="row d-flex">
+                    <div class="col-8">
+                        <span class="d-flex h5">
+                            {{dish.dayname}}
+                        </span>
+                        <span class="d-flex justify-content-start">
+                            <span class="col-8">
+                                {{dish.description}}
+                            </span>
+                        </span>
+                        <span class="d-flex justify-content-start my-1">
+                            <span class="col-4">
+                                ₹ {{dish.rate}} /-
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-4 vertical-align-center">
+                        <span class="d-flex justify-content-center text-center p-2 button-grp">
+                            <span class="col-2">
+                                <mat-icon style="font-size: 1.3rem" (click)="removeItem(dish)"
+                                    *ngIf="itemAvailableInCart(dish)">
+                                    remove</mat-icon>
+                            </span>
+                            <span class="col-6" *ngIf="!itemAvailableInCart(dish)" (click)="addItem(dish)">Add</span>
+                            <span class="col-6" *ngIf="itemAvailableInCart(dish)">{{dish.qty}}</span>
+                            <span class="col-2">
+                                <mat-icon style="font-size: 1.3rem" (click)="addItem(dish)"
+                                    *ngIf="itemAvailableInCart(dish)">
+                                    add</mat-icon>
+                            </span>
+                        </span>
+                        <span class="d-flex justify-content-center">
+                            <span *ngIf="dish.qty !== undefined">₹ {{dish.qty * dish.rate}}</span>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="d-flex">
-                <div class="col-9 text-start">
-                    Delivery charges
-                </div>
-                <div class="col-3 text-end">
-                    ₹ 0
-                </div>
-            </div>
 
-            <hr>
-
-            <div class="d-flex">
-                <div class="col-9 text-start">
-                    Grand Total
-                </div>
-                <div class="col-3 text-end">
-                    ₹ {{subTotalBill() + 0}}
-                </div>
-            </div>
         </div>
 
+        <div class="container card p-2">
+            <span (click)="addMore()">Add more items</span>
+        </div>
+
+        <div class="my-1">
+            <div class="d-flex justify-content-center text-center">
+                <div class="col-4">
+                    <hr />
+                </div>
+                <div class="col-4">
+                    Bill Summary
+                </div>
+                <div class="col-4">
+                    <hr />
+                </div>
+            </div>
+
+            <div class="block-container p-2">
+                <div class="d-flex">
+                    <div class="col-9 text-start">
+                        Subtotal
+                    </div>
+                    <div class="col-3 text-end">
+                        ₹ {{subTotalBill()}}
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="col-9 text-start">
+                        Delivery charges
+                    </div>
+                    <div class="col-3 text-end">
+                        ₹ 0
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="d-flex">
+                    <div class="col-9 text-start">
+                        Grand Total
+                    </div>
+                    <div class="col-3 text-end">
+                        ₹ {{subTotalBill() + 0}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
 
     <div class="fixed-bottom bg-white">
         <span class="row d-flex p-2 justify-content-between text-center" (click)="openBottomSheet()"
@@ -135,7 +138,7 @@
                 ₹ {{subTotalBill()}}
             </span>
             <span class="col-5">
-                <button class="btn btn-primary">Place Order</button>
+                <button class="btn btn-primary" [disabled]="selectedAddress._id === ''">Place Order</button>
             </span>
         </div>
     </div>

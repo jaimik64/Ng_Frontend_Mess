@@ -4,6 +4,7 @@ import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { I18nService } from 'src/app/global-services/i18n.service';
+import Swal from 'sweetalert2';
 import { AddressData } from '../models';
 import { UserService } from '../user.service';
 import { AddAddressComponent } from './add-address/add-address.component';
@@ -63,10 +64,46 @@ export class AddressListComponent extends I18nService implements OnInit {
 
   addAddress() {
     this.close();
-    this.dialog.open(AddAddressComponent, { data: { isEdit: false } });
+    this.dialog.open(AddAddressComponent, { data: { isEdit: false, address: {} } });
+    this.getAddressData();
   }
 
-  updateAddress() {
-    this.dialog.open(AddAddressComponent, { data: { isEdit: true } });
+  updateAddress(address: AddressData) {
+    this.close();
+    this.dialog.open(AddAddressComponent, { data: { isEdit: true, address: address } });
+    this.getAddressData();
+  }
+
+  confirm(address: AddressData) {
+    Swal.fire({
+      text: `Are you sure, You want to remove ${address.name}'s address?`,
+      title: 'Are you Sure?',
+      icon: 'warning',
+      confirmButtonText: 'Confirm',
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
+      cancelButtonColor: '#d33',
+      confirmButtonColor: '#3085d6'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteAddress(address);
+      }
+    })
+  }
+
+  deleteAddress(address: AddressData) {
+    this.service.removeAddress(sessionStorage.getItem('userId') ?? '', address._id).subscribe({
+      next: res => {
+        if (res.meta.errorCode === 0) {
+          this.snackbar.open('Address Removed', '', { duration: 2000 });
+        } else {
+          this.snackbar.open(res.meta.message, '', { duration: 2000 });
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        this.snackbar.open(err.error.meta.message, '', { duration: 2000 });
+      }
+    });
+    this.getAddressData();
   }
 }

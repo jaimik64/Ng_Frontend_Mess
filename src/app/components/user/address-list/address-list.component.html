@@ -21,7 +21,7 @@
         <div class="p-2 card my-2"
             [class]="selectedAddress._id === address._id ? 'bg-secondary text-white' : 'bg-white'"
             (click)="selectAddress(address)">
-            <div class="row d-flex">
+            <div class="d-flex">
                 <div class="col-3 text-center">
                     <mat-icon>location_on</mat-icon>
                 </div>
@@ -31,6 +31,14 @@
                     </div>
                     <div class="row">
                         {{address.address}}, {{address.city}}
+                    </div>
+                    <div class="d-flex">
+                        <span class="border cursor p-1">
+                            <mat-icon (click)="updateAddress(address)">edit</mat-icon>
+                        </span>
+                        <span class="border cursor p-1">
+                            <mat-icon (click)="confirm(address)">delete</mat-icon>
+                        </span>
                     </div>
                 </div>
             </div>

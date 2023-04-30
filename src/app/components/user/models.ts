@@ -35,6 +35,15 @@ export interface AddressData {
     city: string;
 }
 
+export interface AddressDataPayload {
+    name: string;
+    mobile: string;
+    pincode: string;
+    address: string;
+    city: string;
+    user: string;
+}
+
 export interface AddressResponse {
     meta: Meta;
     data: AddressData[];
