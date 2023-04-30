@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { I18nService } from 'src/app/global-services/i18n.service';
+import { AddressListComponent } from '../address-list/address-list.component';
 import { DishData, MessData } from '../models';
 import { UserService } from '../user.service';
 
@@ -21,8 +23,9 @@ export class CheckOutComponent extends I18nService implements OnInit {
     city: ''
   };
   cartItems: DishData[] = [];
+  isBottomSheetOpened: boolean = false;
 
-  constructor(private service: UserService, private snackbar: MatSnackBar, private router: Router) {
+  constructor(private service: UserService, private snackbar: MatSnackBar, private router: Router, private _bottomSheet: MatBottomSheet) {
     super();
 
     if (this.service.selectedMess !== null) {
@@ -66,5 +69,25 @@ export class CheckOutComponent extends I18nService implements OnInit {
 
   addMore() {
     this.router.navigateByUrl('/user/dishes');
+  }
+
+  subTotalBill() {
+    let subTotal = 0;
+
+    this.cartItems.forEach((data) => {
+      if (data.qty !== undefined) {
+        subTotal = subTotal + (data.qty * data.rate);
+      }
+    });
+
+    return subTotal;
+  }
+
+  openBottomSheet() {
+    this.isBottomSheetOpened = true;
+
+    this._bottomSheet.open(AddressListComponent, { disableClose: true }).afterDismissed().subscribe((data) => {
+      this.isBottomSheetOpened = data.status;
+    })
   }
 }

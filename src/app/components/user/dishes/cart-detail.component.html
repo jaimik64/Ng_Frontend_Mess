@@ -37,6 +37,10 @@
                             add</mat-icon>
                     </span>
                 </span>
+
+                <span class="d-flex justify-content-center">
+                    <span *ngIf="dish.qty !== undefined">{{dish.qty * dish.rate}}</span>
+                </span>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse } from './models';
+import { AddressData, AddressResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class UserService {
   selectedMess: MessData | null = null;
   cart: DishData[] = [];
   isMessChanged: boolean = false;
+  selectedAddress: AddressData | null = null;
 
   constructor(private http: HttpClient) { }
 
@@ -42,8 +43,6 @@ export class UserService {
         this.cart?.push(dish);
       }
     }
-
-    console.log(this.cart);
   }
 
   removeItemFromCart(dish: DishData) {
@@ -65,8 +64,6 @@ export class UserService {
         this.cart = temp;
       }
     }
-    console.log(this.cart);
-
   }
 
   itemAvailableInCart(dish: DishData) {
@@ -103,5 +100,22 @@ export class UserService {
       }
     }
     return;
+  }
+
+  getAllAddresses(userId: string) {
+    return this.http.get<AddressResponse>(`${environment.baseUrl}${environment.UserGetAddresses}/${userId}`);
+  }
+
+  updateAddress(userId: string, addressId: string) {
+    // TODO: Add Address Data
+    return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.UserUpdateAddress}/${userId}/${addressId}`, {});
+  }
+
+  removeAddress(userId: string, addressId: string) {
+    return this.http.delete<GenericResponse>(`${environment.baseUrl}${environment.UserRemoveAddress}/${userId}/${addressId}`);
+  }
+
+  addAddress(userId: string) {
+    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserAddAddress}/${userId}`, {});
   }
 }

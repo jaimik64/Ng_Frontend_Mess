@@ -26,6 +26,20 @@ export interface DishData {
     qty?: number;
 }
 
+export interface AddressData {
+    _id: string;
+    name: string;
+    mobile: string;
+    pincode: string;
+    address: string;
+    city: string;
+}
+
+export interface AddressResponse {
+    meta: Meta;
+    data: AddressData[];
+}
+
 export interface MessDetailsResponse {
     meta: Meta;
     data: MessData[];

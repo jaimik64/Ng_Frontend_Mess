@@ -39,5 +39,14 @@ export const environment = {
 
     // user
     UserGetMessDetails: '/users/meshes',
-    UserGetDishesByMessId: '/users/mesh/dishes'
+    UserGetDishesByMessId: '/users/mesh/dishes',
+    UserGetAddresses: '/users/addresses',
+    UserAddAddress: '/users/addAddress',
+    UserUpdateAddress: '/users/updateAddress',
+    UserRemoveAddress: '/users/removeAddress',
+    UserGetAllOrders: '/order/orderDetails',
+    UserGetSubscriptions: '/users/subscription',
+    UserGetSubscriptionByMess: '/users/subscriptions',
+    UserBuySubcription: '/users/buy/subscription',
+    UserBuyOrder: '/order/createOrder'
 };

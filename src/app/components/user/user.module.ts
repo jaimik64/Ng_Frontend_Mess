@@ -22,6 +22,8 @@ import { CartBottomSheetComponent, DishesComponent } from './dishes/dishes.compo
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { CheckOutComponent } from './check-out/check-out.component';
+import { AddressListComponent } from './address-list/address-list.component';
+import { AddAddressComponent } from './address-list/add-address/add-address.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { CheckOutComponent } from './check-out/check-out.component';
     SubscriptionsComponent,
     DishesComponent,
     CartBottomSheetComponent,
-    CheckOutComponent
+    CheckOutComponent,
+    AddressListComponent,
+    AddAddressComponent
   ],
   imports: [
     CommonModule,

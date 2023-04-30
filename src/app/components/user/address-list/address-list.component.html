@@ -1,0 +1,35 @@
+<span class="d-flex text-center justify-content-center">
+    <mat-icon (click)="close()" class="border">close</mat-icon>
+</span>
+<span class="d-flex text-start my-1 h4">
+    Select an address
+</span>
+
+<div class="container card p-2">
+    <span (click)="addAddress()">
+        <mat-icon>add</mat-icon>
+        <span class="v-align-super">Add Address</span>
+    </span>
+</div>
+
+<div class="block-container my-2">
+    <span class="text-start h5">
+        Saved addresses
+    </span>
+
+    <div class="p-2 card my-2" *ngFor="let address of addresses">
+        <div class="row d-flex">
+            <div class="col-3 text-center">
+                <mat-icon>location_on</mat-icon>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    {{address.name}}
+                </div>
+                <div class="row">
+                    {{address.address}}, {{address.city}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
