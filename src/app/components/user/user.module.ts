@@ -24,6 +24,7 @@ import { MatListModule } from '@angular/material/list';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { AddressListComponent } from './address-list/address-list.component';
 import { AddAddressComponent } from './address-list/add-address/add-address.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AddAddressComponent } from './address-list/add-address/add-address.comp
     CartBottomSheetComponent,
     CheckOutComponent,
     AddressListComponent,
-    AddAddressComponent
+    AddAddressComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
