@@ -87,15 +87,7 @@ export class CheckOutComponent extends I18nService implements OnChanges {
   }
 
   subTotalBill() {
-    let subTotal = 0;
-
-    this.cartItems.forEach((data) => {
-      if (data.qty !== undefined) {
-        subTotal = subTotal + (data.qty * data.rate);
-      }
-    });
-
-    return subTotal;
+    return this.service.subTotal();
   }
 
   openBottomSheet() {
@@ -105,5 +97,9 @@ export class CheckOutComponent extends I18nService implements OnChanges {
       this.isBottomSheetOpened = data.status;
       this.selectedAddress = data.selectedAddress;
     })
+  }
+
+  placeOrder() {
+    this.router.navigateByUrl('/user/payment');
   }
 }

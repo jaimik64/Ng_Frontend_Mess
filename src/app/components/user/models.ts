@@ -58,3 +58,49 @@ export interface DishDataResponse {
     meta: Meta;
     data: DishData[];
 }
+
+export interface CreateRPOrderData {
+    amount: number;
+    amount_due: number;
+    amount_paid: number;
+    attempts: number;
+    created_at: string;
+    currency: string;
+    entity: string;
+    id: string;
+    notes: string[];
+    offer_id: string;
+    receipt: string;
+    status: string;
+}
+
+export interface CreateRPOrderResponse {
+    meta: Meta;
+    data: CreateRPOrderData;
+}
+
+export interface validatePaymentPayload {
+    orderid: string;
+    paymentid: string;
+    signature: string;
+}
+
+export interface PaymentMode {
+    label: string;
+    key: string;
+}
+
+export interface DishQty {
+    qty: number;
+    dishId: string;
+}
+
+export interface CartCheckout {
+    userid: string;
+    meshid: string;
+    totalbill: number;
+    dishes: DishQty[];
+    status: string;
+    payment: string;
+    addressid: string;
+}

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AddressData, AddressDataPayload, AddressResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse } from './models';
+import { AddressData, AddressDataPayload, AddressResponse, CartCheckout, CreateRPOrderResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse, validatePaymentPayload } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -102,6 +102,18 @@ export class UserService {
     return;
   }
 
+  subTotal() {
+    let subTotal = 0;
+
+    this.cart.forEach((data) => {
+      if (data.qty !== undefined) {
+        subTotal = subTotal + (data.qty * data.rate);
+      }
+    });
+
+    return subTotal;
+  }
+
   getAllAddresses(userId: string) {
     return this.http.get<AddressResponse>(`${environment.baseUrl}${environment.UserGetAddresses}/${userId}`);
   }
@@ -116,5 +128,21 @@ export class UserService {
 
   addAddress(userId: string, address: AddressDataPayload) {
     return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserAddAddress}/${userId}`, address);
+  }
+
+  createOrderInRP(userId: string, totalBill: number) {
+    return this.http.post<CreateRPOrderResponse>(`${environment.baseUrl}${environment.UserCreateOrderInRP}/${userId}`, { totalbill: totalBill });
+  }
+
+  validatePayment(userId: string, payload: validatePaymentPayload) {
+    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserValidatePayment}/${userId}`, { orderid: payload.orderid, signature: payload.signature, paymentid: payload.paymentid });
+  }
+
+  savePaymentDetails(userId: string, payload: validatePaymentPayload) {
+    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserSavePayment}/${userId}`, payload);
+  }
+
+  createOrder(userId: string, cartCheckout: CartCheckout) {
+    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserCreateOrder}/${userId}`, cartCheckout);
   }
 }

@@ -2,6 +2,7 @@ export const environment = {
     production: true,
 
     baseUrl: 'https://better-fawn-cloak.cyclic.app',
+    razorPay_Key_ID: 'rzp_test_QiAASC0rtzmhlz',
 
     // auth
     login: '/auth/signin',
@@ -12,6 +13,7 @@ export const environment = {
     messSignup: '/mesh/auth/signup',
     messLogout: '/mesh/auth/signout',
 
+    // mess
     getDishesByMessId: '/mesh/dishes',
     getOrdersByMessID: '/mesh/orders',
     getSubscriptionsByMessId: '/mesh/subscription',
@@ -22,6 +24,7 @@ export const environment = {
     updateOrderStatus: '/mesh/updateOrder',
     updateMessProfile: '/mesh/update',
 
+    // admin
     adminGetDishes: '/admin/allDishes',
     adminGetOrders: '/order/allOrders',
     adminGetAddresses: '/admin/allAddresses',
@@ -45,5 +48,9 @@ export const environment = {
     UserGetSubscriptions: '/users/subscription',
     UserGetSubscriptionByMess: '/users/subscriptions',
     UserBuySubcription: '/users/buy/subscription',
-    UserBuyOrder: '/order/createOrder'
+    UserBuyOrder: '/order/createOrder',
+    UserCreateOrderInRP: '/order/createRPOrder',
+    UserValidatePayment: '/order/validateSignature',
+    UserSavePayment: '/order/storeRPOrderDetails',
+    UserCreateOrder: '/order/createOrder'
 };

@@ -138,7 +138,8 @@
                 ₹ {{subTotalBill()}}
             </span>
             <span class="col-5">
-                <button class="btn btn-primary" [disabled]="selectedAddress._id === ''">Place Order</button>
+                <button class="btn btn-primary" [disabled]="selectedAddress._id === ''" (click)="placeOrder()">Place
+                    Order</button>
             </span>
         </div>
     </div>

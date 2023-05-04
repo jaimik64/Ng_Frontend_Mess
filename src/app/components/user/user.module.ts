@@ -25,6 +25,8 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { AddressListComponent } from './address-list/address-list.component';
 import { AddAddressComponent } from './address-list/add-address/add-address.component';
 import { PaymentComponent } from './payment/payment.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import { PaymentComponent } from './payment/payment.component';
     MatIconModule,
     MatMenuModule,
     MatBottomSheetModule,
-    MatListModule
+    MatListModule,
+    MatRadioModule,
+    MatStepperModule
   ]
 })
 export class UserModule { }

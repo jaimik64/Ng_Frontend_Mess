@@ -2,6 +2,7 @@ export const environment = {
     production: false,
 
     baseUrl: 'https://better-fawn-cloak.cyclic.app',
+    razorPay_Key_ID: 'rzp_test_QiAASC0rtzmhlz',
 
     // auth
     login: '/auth/signin',
@@ -48,5 +49,9 @@ export const environment = {
     UserGetSubscriptions: '/users/subscription',
     UserGetSubscriptionByMess: '/users/subscriptions',
     UserBuySubcription: '/users/buy/subscription',
-    UserBuyOrder: '/order/createOrder'
+    UserBuyOrder: '/order/createOrder',
+    UserCreateOrderInRP: '/order/createRPOrder',
+    UserValidatePayment: '/order/validateSignature',
+    UserSavePayment: '/order/storeRPOrderDetails',
+    UserCreateOrder: '/order/createOrder'
 };
