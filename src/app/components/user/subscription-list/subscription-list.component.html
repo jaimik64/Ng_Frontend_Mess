@@ -1,0 +1,34 @@
+<div class="card w-100 h-15 p-3 my-1" *ngFor="let dish of subscriptionList">
+    <div class="row d-flex">
+        <div class="col-8">
+            <span class="d-flex h5">
+                {{dish.dayname}}
+            </span>
+            <span class="d-flex justify-content-start">
+                <span class="col-8">
+                    {{dish.description}}
+                </span>
+            </span>
+            <span class="d-flex justify-content-start my-1">
+                <span class="col-4">
+                    ₹ {{dish.rate}}
+                </span>
+            </span>
+        </div>
+        <!-- <div class="col-4 vertical-align-center">
+            <span class="d-flex text-center p-2 button-grp">
+                <span class="col-3 d-flex">
+                    <mat-icon style="font-size: 1.3rem" (click)="removeItem(dish)" *ngIf="itemAvailableInCart(dish)">
+                        remove</mat-icon>
+                </span>
+                <span class="col-6" style="font-size: 1rem" *ngIf="!itemAvailableInCart(dish)"
+                    (click)="addItem(dish)">Add</span>
+                <span class="col-6" style="font-size: 1rem" *ngIf="itemAvailableInCart(dish)">{{dish.qty}}</span>
+                <span class="col-3 d-flex">
+                    <mat-icon style="font-size: 1.3rem" (click)="addItem(dish)" *ngIf="itemAvailableInCart(dish)">
+                        add</mat-icon>
+                </span>
+            </span>
+        </div> -->
+    </div>
+</div>

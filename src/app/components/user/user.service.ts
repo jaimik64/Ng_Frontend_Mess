@@ -145,4 +145,8 @@ export class UserService {
   createOrder(userId: string, cartCheckout: CartCheckout) {
     return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserCreateOrder}/${userId}`, cartCheckout);
   }
+
+  getSubscriptionByMess(userId: string) {
+    return this.http.post<DishDataResponse>(`${environment.baseUrl}${environment.UserGetSubscriptionByMess}/${userId}/${this.selectedMess?._id}`, {});
+  }
 }

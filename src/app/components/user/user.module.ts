@@ -27,6 +27,8 @@ import { AddAddressComponent } from './address-list/add-address/add-address.comp
 import { PaymentComponent } from './payment/payment.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatTabsModule } from '@angular/material/tabs';
+import { SubscriptionListComponent } from './subscription-list/subscription-list.component';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     CheckOutComponent,
     AddressListComponent,
     AddAddressComponent,
-    PaymentComponent
+    PaymentComponent,
+    SubscriptionListComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +64,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatBottomSheetModule,
     MatListModule,
     MatRadioModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTabsModule
   ]
 })
 export class UserModule { }
