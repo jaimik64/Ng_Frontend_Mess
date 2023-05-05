@@ -1,0 +1,32 @@
+<span class="d-flex text-center justify-content-center">
+    <mat-icon (click)="close()" class="border">close</mat-icon>
+</span>
+<span class="d-flex text-start">
+    <span class="h5"> Subscription Added</span>
+</span>
+<div class="block-container mb-5">
+    <div class="card w-100 h-15 p-3 my-1">
+
+        <div class="row d-flex">
+            <div class="col-12">
+                <span class="d-flex h5">
+                    {{cartItems.dayname}}
+                </span>
+                <span class="d-flex justify-content-start">
+                    <span class="col-10">
+                        {{cartItems.description}}
+                    </span>
+                </span>
+                <span class="d-flex justify-content-start my-1">
+                    <span class="col-4">
+                        ₹ {{cartItems.rate}}/day
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<span class="d-flex my-2 justify-content-end">
+    <button class="mx-3 btn btn-primary text-end" (click)="checkout()">Next</button>
+</span>

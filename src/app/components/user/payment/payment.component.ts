@@ -127,27 +127,6 @@ export class PaymentComponent extends I18nService implements OnInit {
 
   }
 
-  validatePayment(rpPaymentId: string, signature: string) {
-
-    let reqData: validatePaymentPayload = {
-      paymentid: rpPaymentId,
-      orderid: this.order.id,
-      signature: signature
-    };
-    this.service.validatePayment(sessionStorage.getItem('userId') ?? '', reqData).subscribe({
-      next: res => {
-        if (res.meta.errorCode === 0) {
-          this.snackbar.open(res.meta.message, '', { duration: 3000 });
-        } else {
-          this.snackbar.open(res.meta.message, '', { duration: 3000 });
-        }
-      },
-      error: (err: HttpErrorResponse) => {
-        this.snackbar.open(err.error.meta.message, '', { duration: 3000 });
-      }
-    })
-  }
-
   validatePaymentSignature(data: validatePaymentPayload) {
 
     this.service.validatePayment(sessionStorage.getItem('userId') ?? '', data).subscribe({
@@ -265,5 +244,9 @@ export class PaymentComponent extends I18nService implements OnInit {
     this.service.cart = [];
     this.service.selectedMess = null;
     this.service.selectedAddress = null;
+  }
+
+  previous() {
+    this.router.navigateByUrl('/user/checkout');
   }
 }

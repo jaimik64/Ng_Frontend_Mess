@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
-import { CartBottomSheetComponent, DishesComponent } from './dishes/dishes.component';
+import { CartBottomSheetComponent, DishesComponent, SubscriptionBottomSheetComponent } from './dishes/dishes.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { CheckOutComponent } from './check-out/check-out.component';
@@ -29,6 +29,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SubscriptionListComponent } from './subscription-list/subscription-list.component';
+import { SubscriptionCheckOutComponent } from './subscription-check-out/subscription-check-out.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -43,7 +46,9 @@ import { SubscriptionListComponent } from './subscription-list/subscription-list
     AddressListComponent,
     AddAddressComponent,
     PaymentComponent,
-    SubscriptionListComponent
+    SubscriptionListComponent,
+    SubscriptionBottomSheetComponent,
+    SubscriptionCheckOutComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +70,9 @@ import { SubscriptionListComponent } from './subscription-list/subscription-list
     MatListModule,
     MatRadioModule,
     MatStepperModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class UserModule { }

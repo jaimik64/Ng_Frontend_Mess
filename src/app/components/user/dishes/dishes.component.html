@@ -9,7 +9,7 @@
     </div>
 
     <div class="mb-30">
-        <mat-tab-group dynamicHeight mat-stretch-tabs="start">
+        <mat-tab-group dynamicHeight mat-stretch-tabs="start" (focusChange)="focusChanges($event)">
             <mat-tab label="Dish Items" class="d-flex">
                 <ng-container>
                     <div class="card w-100 h-fix-content p-3 my-1" *ngFor="let dish of dishData">
@@ -52,16 +52,41 @@
                 </ng-container>
             </mat-tab>
             <mat-tab label="Subscriptions">
-                <app-subscription-list></app-subscription-list>
+                <div class="card w-100 h-fix-content p-3 my-1" *ngFor="let dish of subscriptionList"
+                    (click)="selectSubscription(dish)">
+                    <div class="row d-flex">
+                        <div class="col-8">
+                            <span class="d-flex h5">
+                                {{dish.dayname}}
+                            </span>
+                            <span class="d-flex justify-content-start">
+                                <span class="col-8">
+                                    {{dish.description}}
+                                </span>
+                            </span>
+                            <span class="d-flex justify-content-start my-1">
+                                <span class="col-4">
+                                    ₹ {{dish.rate}}
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </mat-tab>
         </mat-tab-group>
     </div>
 
     <div class="fixed-bottom bg-white">
         <span class="h5 d-flex p-2 justify-content-between text-center" (click)="openBottomSheet()"
-            *ngIf="cart.length >= 1">
+            *ngIf="cart.length >= 1 && currentTab === 0">
             <span class="col-6" *ngIf="!isBottomSheetOpened">
                 {{totalItemsCount()}} Item(s) Added
+            </span>
+        </span>
+        <span class="h5 d-flex p-2 justify-content-between text-center" (click)="openSubscriptionBottomSheet()"
+            *ngIf="selectedSubs._id !== '' && currentTab === 1">
+            <span class="col-12" *ngIf="!isBottomSheetOpened">
+                Subscription Added
             </span>
         </span>
         <app-bottom-nav *ngIf="!isBottomSheetOpened"></app-bottom-nav>

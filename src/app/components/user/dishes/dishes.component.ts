@@ -25,6 +25,15 @@ export class DishesComponent extends I18nService implements OnInit {
     city: ''
   }
   isBottomSheetOpened: boolean = false;
+  currentTab: number = 0;
+  selectedSubs: DishData = {
+    _id: '',
+    dayname: '',
+    isLunch: 0,
+    rate: 0,
+    description: ''
+  }
+  subscriptionList: DishData[] = [];
 
   constructor(private service: UserService, private snackbar: MatSnackBar, private router: Router, private _bottomSheet: MatBottomSheet) {
     super();
@@ -38,10 +47,15 @@ export class DishesComponent extends I18nService implements OnInit {
     if (this.service.cart !== null) {
       this.cart = this.service.cart;
     }
+
+    if (this.service.selectedSubscription !== null) {
+      this.selectedSubs = this.service.selectedSubscription;
+    }
   }
 
   ngOnInit(): void {
     this.getData();
+    this.getSubscriptionData();
   }
 
   // TODO: Fix dish Details when it routed back to this component
@@ -99,6 +113,39 @@ export class DishesComponent extends I18nService implements OnInit {
       this.isBottomSheetOpened = data.status;
     });
   }
+
+  focusChanges(event: any) {
+    this.currentTab = event.index;
+  }
+
+
+  getSubscriptionData() {
+    this.service.getSubscriptionByMess(sessionStorage.getItem('userId') ?? '').subscribe({
+      next: res => {
+        if (res.meta.errorCode === 0) {
+          this.subscriptionList = res.data;
+        } else {
+          this.snackbar.open(res.meta.message, '', { duration: 3000 });
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        this.snackbar.open(err.error.meta.message, '', { duration: 3000 });
+
+      }
+    })
+  }
+
+  selectSubscription(data: DishData) {
+    this.service.selectedSubscription = data;
+    this.selectedSubs = data;
+  }
+
+  openSubscriptionBottomSheet() {
+    this.isBottomSheetOpened = true;
+    this._bottomSheet.open(SubscriptionBottomSheetComponent, { disableClose: true }).afterDismissed().subscribe(data => {
+      this.isBottomSheetOpened = data.status;
+    });
+  }
 }
 
 @Component({
@@ -153,5 +200,41 @@ export class CartBottomSheetComponent extends I18nService implements OnInit {
   checkout() {
     this.close();
     this.router.navigateByUrl('/user/checkout');
+  }
+}
+
+@Component({
+  selector: 'subscription-details',
+  templateUrl: './subscription-detail.component.html',
+  styleUrls: ['./dishes.component.less']
+})
+export class SubscriptionBottomSheetComponent extends I18nService implements OnInit {
+
+  cartItems: DishData = {
+    _id: '',
+    dayname: '',
+    isLunch: 0,
+    rate: 0,
+    description: ''
+  };
+  totalItems: number = 0;
+
+  constructor(private _bottomSheetRef: MatBottomSheetRef<CartBottomSheetComponent>, private service: UserService, @Inject(MAT_BOTTOM_SHEET_DATA) public data: any, private router: Router) {
+    super();
+  }
+
+  ngOnInit(): void {
+    if (this.service.selectedSubscription !== null) {
+      this.cartItems = this.service.selectedSubscription;
+    }
+  }
+
+  close() {
+    this._bottomSheetRef.dismiss({ status: false });
+  }
+
+  checkout() {
+    this.close();
+    this.router.navigateByUrl('/user/sub-checkout');
   }
 }

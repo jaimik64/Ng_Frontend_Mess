@@ -104,3 +104,14 @@ export interface CartCheckout {
     payment: string;
     addressid: string;
 }
+
+export interface SubscriptionPayload {
+    fees: number;
+    toDate: Date;
+    fromDate: Date;
+    userId: string;
+    meshId: string;
+    addressId: string;
+    dishId: string;
+    paymentId: string;
+}

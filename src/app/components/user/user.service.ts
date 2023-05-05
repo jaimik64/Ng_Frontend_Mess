@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AddressData, AddressDataPayload, AddressResponse, CartCheckout, CreateRPOrderResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse, validatePaymentPayload } from './models';
+import { AddressData, AddressDataPayload, AddressResponse, CartCheckout, CreateRPOrderResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse, SubscriptionPayload, validatePaymentPayload } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class UserService {
   cart: DishData[] = [];
   isMessChanged: boolean = false;
   selectedAddress: AddressData | null = null;
+  selectedSubscription: DishData | null = null;
 
   constructor(private http: HttpClient) { }
 
@@ -148,5 +149,9 @@ export class UserService {
 
   getSubscriptionByMess(userId: string) {
     return this.http.post<DishDataResponse>(`${environment.baseUrl}${environment.UserGetSubscriptionByMess}/${userId}/${this.selectedMess?._id}`, {});
+  }
+
+  buySubscription(userId: string, data: SubscriptionPayload) {
+    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserBuySubcription}/${userId}`, data);
   }
 }

@@ -1,4 +1,4 @@
-<div class="card w-100 h-15 p-3 my-1" *ngFor="let dish of subscriptionList">
+<div class="card w-100 h-15 p-3 my-1" *ngFor="let dish of subscriptionList" (click)="selectSubscription(dish)">
     <div class="row d-flex">
         <div class="col-8">
             <span class="d-flex h5">

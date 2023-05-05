@@ -36,4 +36,8 @@ export class SubscriptionListComponent extends I18nService implements OnInit {
       }
     })
   }
+
+  selectSubscription(data: DishData) {
+    this.service.selectedSubscription = data;
+  }
 }
