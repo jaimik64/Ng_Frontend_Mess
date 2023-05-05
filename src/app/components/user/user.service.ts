@@ -154,4 +154,12 @@ export class UserService {
   buySubscription(userId: string, data: SubscriptionPayload) {
     return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserBuySubcription}/${userId}`, data);
   }
+
+  getAllOrders(userId: string) {
+    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserGetAllOrders}/${userId}`, { id: userId });
+  }
+
+  getAllSubscriptions(userId: string) {
+    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserGetSubscriptions}/${userId}`, {});
+  }
 }

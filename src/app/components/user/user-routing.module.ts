@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { DishesComponent } from './dishes/dishes.component';
+import { HistoryComponent } from './history/history.component';
 import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
@@ -15,16 +16,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'orders',
-    component: OrderComponent
+    path: 'history',
+    component: HistoryComponent
   },
   {
     path: 'profile',
     component: ProfileComponent
-  },
-  {
-    path: 'subscriptions',
-    component: SubscriptionsComponent
   },
   {
     path: 'dishes',

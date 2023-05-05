@@ -32,6 +32,7 @@ import { SubscriptionListComponent } from './subscription-list/subscription-list
 import { SubscriptionCheckOutComponent } from './subscription-check-out/subscription-check-out.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     PaymentComponent,
     SubscriptionListComponent,
     SubscriptionBottomSheetComponent,
-    SubscriptionCheckOutComponent
+    SubscriptionCheckOutComponent,
+    HistoryComponent
   ],
   imports: [
     CommonModule,
