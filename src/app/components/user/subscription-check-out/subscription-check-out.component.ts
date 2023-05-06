@@ -264,8 +264,8 @@ export class SubscriptionCheckOutComponent extends I18nService implements OnChan
   completeOrder(paymentId: string) {
     this.subscriptionPayload = {
       fees: this.cartItems.rate * 30,
-      toDate: this.range.get('start')?.value ?? new Date(),
-      fromDate: this.range.get('end')?.value ?? new Date(),
+      fromDate: this.range.get('start')?.value ?? new Date(),
+      toDate: this.range.get('end')?.value ?? new Date(),
       userId: sessionStorage.getItem('userId') ?? '',
       meshId: this.mess._id,
       addressId: this.selectedAddress._id,

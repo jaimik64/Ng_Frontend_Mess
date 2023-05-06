@@ -1,3 +1,5 @@
+import { UserData } from "../admin/models";
+
 export interface Meta {
     message: string;
     errorCode: number;
@@ -114,4 +116,48 @@ export interface SubscriptionPayload {
     addressId: string;
     dishId: string;
     paymentId: string;
+}
+
+export interface OrderData {
+    _id: string;
+    userid: string;
+    meshid: string;
+    addressid: string;
+    payment: string;
+    totalbill: number;
+    status: string;
+    settled: boolean;
+    dishes: DishQty[];
+    MeshData: MessData[];
+    UserData: UserData[];
+    Address: AddressData[];
+    DishDetails: DishData[];
+    createdAt: Date;
+}
+
+export interface OrderResponse {
+    meta: Meta;
+    data: OrderData[];
+}
+
+export interface SubscriptionResponse {
+    meta: Meta;
+    data: Subscription[];
+}
+
+export interface Subscription {
+    _id: string;
+    fees: number;
+    toDate: Date;
+    fromDate: Date;
+    userId: string;
+    meshId: string;
+    addressId: string;
+    dishId: string;
+    paymentId: string;
+    settled: boolean;
+    meshData: MessData[];
+    dishData: DishData[];
+    addressData: AddressData[];
+    createdAt: Date;
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AddressData, AddressDataPayload, AddressResponse, CartCheckout, CreateRPOrderResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse, SubscriptionPayload, validatePaymentPayload } from './models';
+import { AddressData, AddressDataPayload, AddressResponse, CartCheckout, CreateRPOrderResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse, OrderData, OrderResponse, Subscription, SubscriptionPayload, validatePaymentPayload } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,8 @@ export class UserService {
   isMessChanged: boolean = false;
   selectedAddress: AddressData | null = null;
   selectedSubscription: DishData | null = null;
+  selectedOrderHistory: OrderData | null = null;
+  selectedSubscriptionHistory: Subscription | null = null;
 
   constructor(private http: HttpClient) { }
 
@@ -156,7 +158,7 @@ export class UserService {
   }
 
   getAllOrders(userId: string) {
-    return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserGetAllOrders}/${userId}`, { id: userId });
+    return this.http.post<OrderResponse>(`${environment.baseUrl}${environment.UserGetAllOrders}/${userId}`, { id: userId });
   }
 
   getAllSubscriptions(userId: string) {

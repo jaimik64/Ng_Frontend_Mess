@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { I18nService } from 'src/app/global-services/i18n.service';
+import { Subscription } from '../models';
 import { UserService } from '../user.service';
 
 @Component({
@@ -11,26 +13,36 @@ import { UserService } from '../user.service';
 })
 export class SubscriptionsComponent extends I18nService implements OnInit {
 
-  constructor(private service: UserService, private snackbar: MatSnackBar) {
+  subscriptionData: Subscription = {
+    _id: '',
+    fees: 0,
+    toDate: new Date(),
+    fromDate: new Date(),
+    userId: '',
+    meshId: '',
+    addressId: '',
+    dishId: '',
+    paymentId: '',
+    settled: false,
+    meshData: [],
+    dishData: [],
+    addressData: [],
+    createdAt: new Date()
+  }
+
+  constructor(private service: UserService, private snackbar: MatSnackBar, private router: Router) {
     super();
+
+    if (this.service.selectedSubscriptionHistory !== null) {
+      this.subscriptionData = this.service.selectedSubscriptionHistory;
+    }
   }
 
   ngOnInit() {
-    this.getSubscriptionData();
   }
 
-  getSubscriptionData() {
-    this.service.getAllSubscriptions(sessionStorage.getItem('userId') ?? '').subscribe({
-      next: res => {
-        if (res.meta.errorCode === 0) {
-          console.log(res.data);
-        } else {
-          this.snackbar.open(res.meta.message, '', { duration: 3000 });
-        }
-      },
-      error: (err: HttpErrorResponse) => {
-        this.snackbar.open(err.error.meta.message, '', { duration: 3000 });
-      }
-    })
+  back() {
+    this.service.selectedSubscriptionHistory = null;
+    this.router.navigateByUrl('/user/history');
   }
 }

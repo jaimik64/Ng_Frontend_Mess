@@ -1,3 +1,130 @@
+<span class="d-flex p-2 fixed-top bg-white">
+    <span class="col-1">
+        <mat-icon (click)="back()">arrow_back</mat-icon>
+    </span>
+</span>
+<div class="p-1 pb-30">
+    <h1 class="p-2">Order Summary</h1>
+    <div class="w-100 h-fix-content p-2">
+        <span class="h3 d-flex">{{orderData.MeshData[0].name}}</span>
+        <span class="h5 d-flex">{{orderData.MeshData[0].location}}, {{orderData.MeshData[0].city}}</span>
+    </div>
+
+    <span class="d-flex text-center my-3">
+        <span class="col-4">
+            <hr />
+        </span>
+        <span class="col-4 h5">Your Order</span>
+        <span class="col-4">
+            <hr />
+        </span>
+    </span>
+
+    <div class="block-container my-1">
+        <div class="w-100 card my-1 p-3" *ngFor="let dish of orderData.DishDetails">
+            <div class="d-flex">
+                <div class="col-10">
+                    <span class="d-flex h5">
+                        {{dish.dayname}}
+                    </span>
+                    <span class="d-flex justify-content-start">
+                        <span class="col-8">
+                            {{dish.description}}
+                        </span>
+                    </span>
+                    <span class="d-flex justify-content-start my-1">
+                        <span class="col-4">
+                            {{dish.qty}} X ₹{{dish.rate}}
+                        </span>
+                    </span>
+                </div>
+                <div class="col-2 d-flex align-items-end">
+                    <span class="d-flex mt-4">
+                        <span *ngIf="dish.qty !== undefined">₹ {{dish.qty * dish.rate}}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="p-2">
+            <span class="d-flex">
+                <span class="col-8 h6">
+                    Item Total
+                </span>
+                <span class="col-4 h6 text-end">
+                    ₹{{orderData.totalbill}}
+                </span>
+            </span>
+            <span class="d-flex h6">
+                <span class="col-8">Delivery Charge</span>
+                <span class="col-4 text-end">FREE</span>
+            </span>
+            <hr />
+            <span class="d-flex h5">
+                <span class="col-8">
+                    Grand Total
+                </span>
+                <span class="col-4 text-end">
+                    ₹{{orderData.totalbill}}
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <span class="d-flex text-center my-3">
+        <span class="col-4">
+            <hr />
+        </span>
+        <span class="col-4 h5">Order Details</span>
+        <span class="col-4">
+            <hr />
+        </span>
+    </span>
+
+    <div>
+        <div class="m-1 my-2">
+            <span class="d-flex text-muted">
+                Order Number
+            </span>
+            <span class="d-flex">
+                {{orderData._id}}
+            </span>
+        </div>
+        <div class="m-1 my-2">
+            <span class="d-flex text-muted">
+                Payment
+            </span>
+            <span class="d-flex">
+                Paid: {{orderData.payment}}
+            </span>
+        </div>
+        <div class="m-1 my-2">
+            <span class="d-flex text-muted">
+                Date
+            </span>
+            <span class="d-flex">
+                {{orderData.createdAt | date: 'medium'}}
+            </span>
+        </div>
+        <div class="m-1 my-2">
+            <span class="d-flex text-muted">
+                Phone Number
+            </span>
+            <span class="d-flex">
+                {{orderData.Address[0].mobile}}
+            </span>
+        </div>
+        <div class="m-1 my-2">
+            <span class="d-flex text-muted">
+                Deliver to
+            </span>
+            <span class="d-flex">
+                {{orderData.Address[0].address}}, {{orderData.Address[0].city}}
+            </span>
+        </div>
+    </div>
+</div>
+
 <div class="fixed-bottom">
     <app-bottom-nav></app-bottom-nav>
 </div>

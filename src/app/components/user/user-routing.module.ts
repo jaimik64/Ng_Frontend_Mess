@@ -38,6 +38,14 @@ const routes: Routes = [
   {
     path: 'sub-checkout',
     component: SubscriptionCheckOutComponent
+  },
+  {
+    path: 'order',
+    component: OrderComponent
+  },
+  {
+    path: 'subcription',
+    component: SubscriptionsComponent
   }
 ];
 
