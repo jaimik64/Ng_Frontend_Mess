@@ -35,6 +35,8 @@ export class SubscriptionsComponent extends I18nService implements OnInit {
 
     if (this.service.selectedSubscriptionHistory !== null) {
       this.subscriptionData = this.service.selectedSubscriptionHistory;
+    } else {
+      this.router.navigateByUrl('/user/history')
     }
   }
 

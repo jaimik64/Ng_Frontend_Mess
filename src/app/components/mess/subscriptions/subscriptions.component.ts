@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
   ],
 })
 export class SubscriptionsComponent extends I18nService implements OnInit {
-  displayedColumns: string[] = ['name', 'fees', 'toDate', 'fromDate', 'paymentId', 'settled', 'expand'];
+  displayedColumns: string[] = ['name', 'fees', 'fromDate', 'toDate', 'paymentId', 'settled', 'expand'];
   dataSource: MatTableDataSource<SubscriptionData> = new MatTableDataSource();
   expandedElement: SubscriptionData | null = null;
 
