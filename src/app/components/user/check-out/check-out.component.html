@@ -1,13 +1,13 @@
-<div class=" h-100 bg-blue">
-    <div class="p-1 pb-30 mb-30 ">
+<div class="bg-blue mb-30">
+    <div class="p-1 pb-30">
         <div class="box p-3">
-            <span class="row h4">
+            <span class="d-flex h4">
                 {{mess.name}}
             </span>
         </div>
 
         {{totalItems() === 1 ? '' : ''}}
-        <div class="row d-flex justify-content-center text-center">
+        <div class="d-flex justify-content-center text-center">
             <div class="col-4">
                 <hr />
             </div>
@@ -20,7 +20,7 @@
         </div>
         <div class="block-container my-1">
             <div class=" w-100 h-15 p-3 " *ngFor="let dish of cartItems">
-                <div class="row d-flex">
+                <div class="d-flex">
                     <div class="col-8">
                         <span class="d-flex h5">
                             {{dish.dayname}}
@@ -109,39 +109,37 @@
 
         </div>
     </div>
+</div>
 
 
-    <div class="fixed-bottom bg-white">
-        <span class="row d-flex p-2 justify-content-between text-center" (click)="openBottomSheet()"
-            *ngIf="!isBottomSheetOpened">
+<div class="fixed-bottom bg-white">
+    <span class="d-flex p-2 justify-content-between text-center" (click)="openBottomSheet()"
+        *ngIf="!isBottomSheetOpened">
 
-            <span class="col-2">
-                <mat-icon>location_on</mat-icon>
+        <span class="col-2">
+            <mat-icon>location_on</mat-icon>
+        </span>
+        <span class="col-10" *ngIf="selectedAddress._id !== ''">
+            <span class="d-flex">
+                Deliver to {{selectedAddress.name}}
             </span>
-            <span class="col-10" *ngIf="selectedAddress._id !== ''">
-                <span class="row">
-                    Deliver to {{selectedAddress.name}}
-                </span>
-                <span class="row">
-                    {{selectedAddress.address}}
-                </span>
-            </span>
-            <span class="col-10 h5 text-start" *ngIf="selectedAddress._id === ''">
-                Select Address
+            <span class="d-flex">
+                {{selectedAddress.address}}
             </span>
         </span>
+        <span class="col-10 h5 text-start" *ngIf="selectedAddress._id === ''">
+            Select Address
+        </span>
+    </span>
 
-        <div class="bg-white row w-100 d-flex justify-content-center text-center border-top p-1"
-            *ngIf="!isBottomSheetOpened">
-            <span class="col-7 text-align">
-                <span class="text-bold mx-2">Total</span>
-                ₹ {{subTotalBill()}}
-            </span>
-            <span class="col-5">
-                <button class="btn btn-primary" [disabled]="selectedAddress._id === ''" (click)="placeOrder()">Place
-                    Order</button>
-            </span>
-        </div>
+    <div class="bg-white w-100 d-flex justify-content-center text-center border-top p-1" *ngIf="!isBottomSheetOpened">
+        <span class="col-7 text-align">
+            <span class="text-bold mx-2">Total</span>
+            ₹ {{subTotalBill()}}
+        </span>
+        <span class="col-5">
+            <button class="btn btn-primary" [disabled]="selectedAddress._id === ''" (click)="placeOrder()">Place
+                Order</button>
+        </span>
     </div>
-
 </div>

@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { I18nService } from 'src/app/global-services/i18n.service';
+import Swal from 'sweetalert2';
 import { AdminService } from '../admin.service';
 import { SubscriptionData } from '../models';
 
@@ -27,6 +28,7 @@ export class ManageSubscriptionsComponent extends I18nService implements OnInit 
   displayedColumns: string[] = ['subscriptionId', 'paymentId', 'toDate', 'fromDate', 'amount', 'settled'];
   displayedColumnsWithExpand: string[] = [...this.displayedColumns, 'expand'];
   expandedElement: SubscriptionData | null = null;
+  totalSettleAmount: number = 0;
 
   @ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
     this.dataSource.paginator = paginator;
@@ -70,5 +72,62 @@ export class ManageSubscriptionsComponent extends I18nService implements OnInit 
 
   expandView(event: Event) {
     event.stopPropagation();
+  }
+
+  getUnsettledSubscriptions() {
+    this.service.unsettledSubscriptions(sessionStorage.getItem('userId') ?? '').subscribe({
+      next: res => {
+        if (res.meta.errorCode === 0) {
+          res.data.forEach((data) => {
+            this.totalSettleAmount = this.totalSettleAmount + data.total;
+          });
+          this.confirmSettlement();
+        } else {
+          this.snackbar.open(res.meta.message, '', { duration: 3000 });
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        this.snackbar.open(err.error.meta.message, '', { duration: 3000 });
+      }
+    })
+  }
+
+  confirmSettlement() {
+    let x = this.totalSettleAmount.toString();
+    var lastThree = x.substring(x.length - 3);
+    var otherNumbers = x.substring(0, x.length - 3);
+    if (otherNumbers != '')
+      lastThree = ',' + lastThree;
+    var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+    Swal.fire({
+      text: `₹ ${res} will be settled to mess.`,
+      title: 'Are you Sure?',
+      icon: 'warning',
+      confirmButtonText: 'Confirm',
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
+      cancelButtonColor: '#d33',
+      confirmButtonColor: '#3085d6'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.settleOrders();
+      }
+    })
+  }
+
+  settleOrders() {
+    this.service.settleSubscriptions(sessionStorage.getItem('userId') ?? '').subscribe({
+      next: res => {
+        if (res.meta.errorCode === 0) {
+          this.snackbar.open('Successfully settled subscriptions');
+          this.getData();
+        } else {
+          this.snackbar.open(res.meta.message, '', { duration: 3000 });
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        this.snackbar.open(err.error.meta.message, '', { duration: 3000 });
+      }
+    })
   }
 }

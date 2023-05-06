@@ -25,12 +25,8 @@ export const navList: navContent = {
                     name: 'Dashboard'
                 },
                 {
-                    action: '/user/subscriptions',
-                    name: 'Subscriptions'
-                },
-                {
-                    action: '/user/orders',
-                    name: 'Orders'
+                    action: '/user/history',
+                    name: 'History'
                 },
 
             ],
@@ -60,8 +56,8 @@ export const navList: navContent = {
         {
             menuList: [
                 {
-                    action: '/admin/dashboard',
-                    name: 'Admin Dashboard'
+                    action: '/user',
+                    name: 'Login as User'
                 },
                 {
                     action: '/admin/users',

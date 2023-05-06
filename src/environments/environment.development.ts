@@ -36,6 +36,8 @@ export const environment = {
     adminRemoveMess: '/admin/removeMesh',
     adminSettleOrders: '/admin/settleOrders',
     adminSettleSubscriptions: '/admin/settleSubscriptions',
+    adminUnSettledOrders: '/admin/unsettledOrders',
+    adminUnSettledSubscriptions: '/admin/unsettledSubscriptions',
 
     // user
     UserGetMessDetails: '/users/meshes',

@@ -7,6 +7,9 @@
                     <input type="text" matInput (keyup)="applyFilter($event)" #input>
                 </mat-form-field>
             </div>
+            <div class="col-6 text-center">
+                <button class="btn btn-primary" (click)="getUnsettledOrders()">Settle</button>
+            </div>
         </div>
 
         <div class="table-responsive">

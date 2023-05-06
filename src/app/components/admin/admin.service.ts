@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AddressDataResponse, DishDataResponse, GenericResponse, MessDataResponse, MessUserData, OrderDataResponse, SubscriptionDataResponse, UserdataResponse } from './models';
+import { AddressDataResponse, DishDataResponse, GenericResponse, MessDataResponse, MessUserData, OrderDataResponse, SubscriptionDataResponse, UnsettledOrdersResponse, UserdataResponse } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +52,13 @@ export class AdminService {
 
   settleSubscriptions(userId: string) {
     return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.adminSettleSubscriptions}/${userId}`, {})
+  }
+
+  unsettledOrderList(userId: string) {
+    return this.http.get<UnsettledOrdersResponse>(`${environment.baseUrl}${environment.adminUnSettledOrders}/${userId}`);
+  }
+
+  unsettledSubscriptions(userId: string) {
+    return this.http.get<UnsettledOrdersResponse>(`${environment.baseUrl}${environment.adminUnSettledSubscriptions}/${userId}`);
   }
 }

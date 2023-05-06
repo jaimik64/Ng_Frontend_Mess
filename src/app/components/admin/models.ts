@@ -1,3 +1,5 @@
+import { Meta } from "@angular/platform-browser";
+
 export interface MetaInfo {
     errorCode: number;
     message: string;
@@ -117,4 +119,14 @@ export interface AddressDataResponse {
 export interface MessDataResponse {
     meta: MetaInfo;
     data: { meshes: MessUserData[]; }
+}
+
+export interface UnsettledOrders {
+    meshUsers: MessUserData[];
+    total: number;
+}
+
+export interface UnsettledOrdersResponse {
+    meta: MetaInfo;
+    data: UnsettledOrders[];
 }
