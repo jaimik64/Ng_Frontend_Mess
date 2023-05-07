@@ -18,13 +18,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
+import { LanguageComponent } from './language/language.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     HomeComponent,
     LoaderComponent,
-    BottomNavComponent
+    BottomNavComponent,
+    LanguageComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,7 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
     MatMenuModule,
     MatProgressSpinnerModule
   ],
-  exports: [LoaderComponent, NavbarComponent, HomeComponent, BottomNavComponent],
+  exports: [LoaderComponent, NavbarComponent, HomeComponent, BottomNavComponent, LanguageComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

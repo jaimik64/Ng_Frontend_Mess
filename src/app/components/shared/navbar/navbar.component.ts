@@ -27,7 +27,7 @@ export class NavbarComponent extends I18nService {
   logout() {
     localStorage.clear()
     this.snackBar.open('Logged Out', 'Ok', {
-      verticalPosition: 'top'
+      verticalPosition: 'top', duration: 3000
     })
     this.router.navigate(['/'])
   }
