@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AddressData, AddressDataPayload, AddressResponse, CartCheckout, CreateRPOrderResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse, OrderData, OrderResponse, Subscription, SubscriptionPayload, validatePaymentPayload } from './models';
+import { AddressData, AddressDataPayload, AddressResponse, CartCheckout, CreateRPOrderResponse, DishData, DishDataResponse, GenericResponse, MessData, MessDetailsResponse, OrderData, OrderResponse, Subscription, SubscriptionPayload, UserData, UserProfileResponse, validatePaymentPayload } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -164,4 +164,13 @@ export class UserService {
   getAllSubscriptions(userId: string) {
     return this.http.post<GenericResponse>(`${environment.baseUrl}${environment.UserGetSubscriptions}/${userId}`, {});
   }
+
+  getUserDetails(userId: string) {
+    return this.http.get<UserProfileResponse>(`${environment.baseUrl}${environment.UserProfile}/${userId}`);
+  }
+
+  updateUserProfile(userId: string, updatedData: UserData) {
+    return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.UpdateUserProfile}/${userId}`, updatedData);
+  }
+
 }

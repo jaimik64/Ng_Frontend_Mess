@@ -2,7 +2,7 @@
     <mat-icon (click)="close()" class="border">close</mat-icon>
 </span>
 <span class="d-flex text-start">
-    <span class="h5"> Subscription Added</span>
+    <span class="h5">{{i18n('dishes.subscriptionAdded')}}</span>
 </span>
 <div class="block-container mb-5">
     <div class="card w-100 h-15 p-3 my-1">
@@ -28,5 +28,5 @@
 </div>
 
 <span class="d-flex my-2 justify-content-end">
-    <button class="mx-3 btn btn-primary text-end" (click)="checkout()">Next</button>
+    <button class="mx-3 btn btn-primary text-end" (click)="checkout()">{{i18n('signup.next')}}</button>
 </span>

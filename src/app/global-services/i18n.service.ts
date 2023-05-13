@@ -13,8 +13,8 @@ export class I18nService {
     this.loadData()
   }
 
-  async loadData() {
-    await import('src/assets/translations/' + this.viewLanguage + '.json').then(data => {
+  loadData() {
+    import('src/assets/translations/' + this.viewLanguage + '.json').then(data => {
       this.jsonData = data
     })
   }

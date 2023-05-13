@@ -54,5 +54,7 @@ export const environment = {
     UserCreateOrderInRP: '/order/createRPOrder',
     UserValidatePayment: '/order/validateSignature',
     UserSavePayment: '/order/storeRPOrderDetails',
-    UserCreateOrder: '/order/createOrder'
+    UserCreateOrder: '/order/createOrder',
+    UserProfile: '/users/getProfile',
+    UpdateUserProfile: '/users/updateProfile'
 };

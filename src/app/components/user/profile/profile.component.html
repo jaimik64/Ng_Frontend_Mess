@@ -1,3 +1,54 @@
-<div class="fixed-bottom">
-    <app-bottom-nav></app-bottom-nav>
+<div class="block-container p-5">
+    <div class="card d-flex p-3">
+
+        <span class="d-flex justify-content-center my-3">
+            <mat-icon style="font-size: 1.5rem;">account_circle</mat-icon>
+        </span>
+        <form action="" [formGroup]="userForm">
+            <div class="d-flex w-100 justify-content-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>{{i18n('profile.userName')}}</mat-label>
+                    <input type="text" matInput formControlName="name">
+                </mat-form-field>
+            </div>
+
+            <div class="d-flex w-100 justify-content-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>{{i18n('profile.emailId')}}</mat-label>
+                    <input type="text" matInput formControlName="email">
+                </mat-form-field>
+            </div>
+
+            <div class="d-flex w-100 justify-content-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>{{i18n('profile.mob')}}</mat-label>
+                    <input type="text" matInput formControlName="mobile">
+                </mat-form-field>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button mat-raised-button class="btn btn-primary" color="primary"
+                    (click)="updateProfileData()">{{i18n('profile.update')}}</button>
+            </div>
+        </form>
+
+    </div>
+
+    <div class=" text-start my-3">
+        <div class="d-flex">
+            <span class="h5 text-muted" (click)="openAddressBook()">{{i18n('profile.address')}}</span>
+        </div>
+        <div class="d-flex">
+            <span class="h5 text-muted" (click)="chooseLanguage()">{{i18n('profile.lan')}}</span>
+        </div>
+        <div class="d-flex" *ngIf="userProfile.role === 1">
+            <span class="h5 text-muted" (click)="switchToAdmin()">{{i18n('profile.switch')}}</span>
+        </div>
+        <div class="d-flex">
+            <span class="h5 text-muted" (click)="logout()">{{i18n('navbar.logout')}}</span>
+        </div>
+    </div>
+</div>
+<div class="fixed-bottom bg-white">
+    <app-bottom-nav *ngIf="!isBottomSheetOpened"></app-bottom-nav>
 </div>

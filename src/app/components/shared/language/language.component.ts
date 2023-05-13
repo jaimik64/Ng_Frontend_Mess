@@ -10,6 +10,10 @@ export class LanguageComponent extends I18nService {
 
   lan: string = localStorage.getItem('ln') ?? 'en';
 
+  constructor() {
+    super();
+  }
+
   setLanguage() {
     this.setLocale(this.lan);
   }

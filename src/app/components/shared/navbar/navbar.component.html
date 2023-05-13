@@ -2,12 +2,6 @@
     <mat-sidenav #sidenav mode="over" [(opened)]="isExpanded" [fixedInViewport]="true">
 
         <section class="h-100">
-            <div class="px-2" [style.height]="'67px'">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput (keyup)="filterPages()" placeholder="Search pages...">
-                    <mat-icon matPrefix (click)="searchText = '';filterPages()">search</mat-icon>
-                </mat-form-field>
-            </div>
             <div [style.height]="'calc(100% - 67px)'" class="overflow-auto">
                 <mat-accordion *ngIf="filteredData.length !== 0;else noMenuFound" [multi]="searchText !== ''">
                     <ng-container *ngFor="let monoMenu of filteredData;">

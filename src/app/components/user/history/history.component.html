@@ -3,19 +3,19 @@
         <mat-tab label="Orders">
             <div class="p-1 pb-30">
                 <div class="card w-100 h-fix-content p-3 my-1" *ngFor="let order of orderData">
-                    <h3>Ordered On {{order.createdAt | date: 'medium'}}</h3>
+                    <h3>{{i18n('history.orderedOn')}} {{order.createdAt | date: 'medium'}}</h3>
 
                     <span class="row">
                         <span class="col-10">
-                            <span class="text-muted d-flex">Order ID : {{order._id}}</span>
-                            <span class="text-muted d-flex">Order Status :
+                            <span class="text-muted d-flex">{{i18n('history.orderId')}} : {{order._id}}</span>
+                            <span class="text-muted d-flex">{{i18n('history.orderStatus')}} :
 
                                 <span *ngIf="order.status== 'preparing'">{{i18n('order.preparing')}}</span>
                                 <span *ngIf="order.status=== 'outfordelivery'">{{i18n('order.out-for-delivery')}}</span>
                                 <span *ngIf="order.status== 'placed'">{{i18n('order.placed')}}</span>
                                 <span *ngIf="order.status === 'delivered'">{{i18n('order.delivered')}}</span>
                             </span>
-                            <span class="text-muted d-flex">Order Amount : ₹ {{order.totalbill}}</span>
+                            <span class="text-muted d-flex">{{i18n('history.amount')}} : ₹ {{order.totalbill}}</span>
                         </span>
                         <span class="col-2">
                             <mat-icon (click)="selectOrder(order)">arrow_forward_ios</mat-icon>

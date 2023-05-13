@@ -19,7 +19,7 @@
         <span class="h5 d-flex p-2 justify-content-between text-center" (click)="openBottomSheet()"
             *ngIf="cart.length >= 1">
             <span class="col-6" *ngIf="!isBottomSheetOpened">
-                {{totalItemsCount()}} Item(s) Added
+                {{totalItemsCount()}} {{i18n('checkout.itemAdded')}}
             </span>
         </span>
         <app-bottom-nav *ngIf="!isBottomSheetOpened"></app-bottom-nav>

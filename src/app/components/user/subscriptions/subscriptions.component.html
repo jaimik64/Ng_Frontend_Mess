@@ -4,7 +4,7 @@
     </span>
 </span>
 <div class="p-1 pb-30">
-    <h1 class="p-2">Order Summary</h1>
+    <h1 class="p-2">{{i18n('order.summary')}}</h1>
     <div class="w-100 h-fix-content p-2">
         <span class="h3 d-flex">{{subscriptionData.meshData[0].name}}</span>
         <span class="h5 d-flex">{{subscriptionData.meshData[0].location}}, {{subscriptionData.meshData[0].city}}</span>
@@ -14,7 +14,7 @@
         <span class="col-4">
             <hr />
         </span>
-        <span class="col-4 h5">Your Order</span>
+        <span class="col-4 h5">{{i18n('order.your')}}</span>
         <span class="col-4">
             <hr />
         </span>
@@ -49,20 +49,20 @@
         <div class="p-2">
             <span class="d-flex">
                 <span class="col-8 h6">
-                    Item Total
+                    {{i18n('order.itemTotal')}}
                 </span>
                 <span class="col-4 h6 text-end">
                     ₹{{subscriptionData.fees}}
                 </span>
             </span>
             <span class="d-flex h6">
-                <span class="col-8">Delivery Charge</span>
-                <span class="col-4 text-end">FREE</span>
+                <span class="col-8">{{i18n('checkout.delivery')}}</span>
+                <span class="col-4 text-end">{{i18n('sub.free')}}</span>
             </span>
             <hr />
             <span class="d-flex h5">
                 <span class="col-8">
-                    Grand Total
+                    {{i18n('sub.grandTotal')}}
                 </span>
                 <span class="col-4 text-end">
                     ₹{{subscriptionData.fees}}
@@ -75,7 +75,7 @@
         <span class="col-4">
             <hr />
         </span>
-        <span class="col-4 h5">Order Details</span>
+        <span class="col-4 h5">{{i18n('sub.orderDetails')}}</span>
         <span class="col-4">
             <hr />
         </span>
@@ -84,7 +84,7 @@
     <div>
         <div class="m-1 my-2">
             <span class="d-flex text-muted">
-                Order Number
+                {{i18n('sub.orderNo')}}
             </span>
             <span class="d-flex">
                 {{subscriptionData._id}}
@@ -92,15 +92,15 @@
         </div>
         <div class="m-1 my-2">
             <span class="d-flex text-muted">
-                Payment
+                {{i18n('order.payment')}}
             </span>
             <span class="d-flex">
-                Paid: {{subscriptionData.paymentId}}
+                {{i18n('order.paid')}}: {{subscriptionData.paymentId}}
             </span>
         </div>
         <div class="m-1 my-2">
             <span class="d-flex text-muted">
-                Date
+                {{i18n('order.orderDate')}}
             </span>
             <span class="d-flex">
                 {{subscriptionData.fromDate | date}} to {{subscriptionData.toDate | date}}
@@ -108,7 +108,7 @@
         </div>
         <div class="m-1 my-2">
             <span class="d-flex text-muted">
-                Phone Number
+                {{i18n('order.phoneNumber')}}
             </span>
             <span class="d-flex">
                 {{subscriptionData.addressData[0].mobile}}
@@ -116,7 +116,7 @@
         </div>
         <div class="m-1 my-2">
             <span class="d-flex text-muted">
-                Deliver to
+                {{i18n('order.deliver')}}
             </span>
             <span class="d-flex">
                 {{subscriptionData.addressData[0].address}}, {{subscriptionData.addressData[0].city}}

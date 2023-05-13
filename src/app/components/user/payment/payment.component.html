@@ -5,22 +5,22 @@
                 <mat-icon (click)="previous()">arrow_back_ios</mat-icon>
             </span>
             <span class="col-11">
-                <span class="h3">Review Cart</span>
+                <span class="h3">{{i18n('payment.review')}}</span>
             </span>
         </div>
         <div class="card p-3 m-2">
-            <h3>Delivery</h3>
-            <span style="margin-top: -5%" class="text-muted">within 30 minutes</span>
+            <h3>{{i18n('payment.delivery')}}</h3>
+            <span style="margin-top: -5%" class="text-muted">{{i18n('payment.timeline')}}</span>
 
             <div class="container left">
-                <h3>Deliver From</h3>
+                <h3>{{i18n('payment.deliver')}}</h3>
                 <div class="card p-2">
                     <h5>{{messAddress?.name}}, {{messAddress?.mobile}}</h5>
                     <h5>{{messAddress?.location}}, {{messAddress?.city}}</h5>
                 </div>
             </div>
             <div class="container right">
-                <h3>Deliver To</h3>
+                <h3>{{i18n('payment.deliverTo')}}</h3>
                 <div class="card p-2">
                     <h5>{{deliveryAddress?.name}}, {{deliveryAddress?.mobile}}</h5>
                     <h5>{{deliveryAddress?.address}}, {{deliveryAddress?.city}}</h5>
@@ -31,7 +31,7 @@
             <div class="block-container p-2">
                 <div class="d-flex">
                     <div class="col-9 text-start">
-                        Subtotal
+                        {{i18n('checkout.subtotal')}}
                     </div>
                     <div class="col-3 text-end">
                         ₹ {{total()}}
@@ -39,7 +39,7 @@
                 </div>
                 <div class="d-flex">
                     <div class="col-9 text-start">
-                        Delivery charges
+                        {{i18n('checkout.delivery')}}
                     </div>
                     <div class="col-3 text-end">
                         ₹ 0
@@ -50,7 +50,7 @@
 
                 <div class="d-flex">
                     <div class="col-9 text-start">
-                        Grand Total
+                        {{i18n('checkout.grand')}}
                     </div>
                     <div class="col-3 text-end">
                         ₹ {{total() + 0}}
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="card m-2 mb-20 p-3">
-            <label for="" class="h6">Select Payment Mode</label>
+            <label for="" class="h6">{{i18n('payment.select')}}</label>
             <mat-radio-group class="example-radio-group" [(ngModel)]="paymentMode">
                 <mat-radio-button class="example-radio-button" *ngFor="let payment of paymentModes"
                     [value]="payment.key">
@@ -70,7 +70,8 @@
     </div>
     <div class="fixed-bottom bg-white">
         <div class="text-center my-1">
-            <button class="btn btn-primary" (click)="proceed()" [disabled]="paymentMode === ''">Proceed</button>
+            <button class="btn btn-primary" (click)="proceed()"
+                [disabled]="paymentMode === ''">{{i18n('payment.proceed')}}</button>
         </div>
         <app-bottom-nav></app-bottom-nav>
     </div>

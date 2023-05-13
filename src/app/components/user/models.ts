@@ -1,5 +1,3 @@
-import { UserData } from "../admin/models";
-
 export interface Meta {
     message: string;
     errorCode: number;
@@ -160,4 +158,19 @@ export interface Subscription {
     dishData: DishData[];
     addressData: AddressData[];
     createdAt: Date;
+}
+
+export interface UserData {
+    _id: string;
+    name: string;
+    mobile: string;
+    email: string;
+    role: number;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+export interface UserProfileResponse {
+    meta: Meta;
+    data: UserData;
 }

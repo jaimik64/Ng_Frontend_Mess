@@ -84,6 +84,74 @@
     "dishes.edit": "Edit Dish",
     "dishes.remove": "Remove Dish",
     "dishes.select-day": "Select Day",
-    "dishes.dish-type": "Select Dish Type"
+    "dishes.dish-type": "Select Dish Type",
 
+    "user.selectAddress": "Select an address",
+    "user.addAddress": "Add Address",
+    "user.savedAddresses": "Saved addresses",
+
+    "address.name": "Enter Name",
+    "address.mobile": "Enter Mobile",
+    "address.add": "Enter Address",
+    "address.pincode": "Enter Pincode",
+    "address.city": "Enter City",
+    "address.edit": "Edit",
+    "address.addBtn": "Add",
+
+    "checkout.itemAdded": "Item(s) Added",
+    "checkout.addMore": "Add more items",
+    "checkout.bill": "Bill Summary",
+    "checkout.subtotal": "Subtotal",
+    "checkout.delivery": "Delivery charges",
+    "checkout.grand": "Grand Total",
+    "checkout.deliverTo": "Deliver to",
+    "checkout.total": "Total",
+    "checkout.placeOrder": "Place Order",
+    
+
+    "dishes.subscriptionAdded": "Subscription Added",
+
+    "history.orderedOn": "Ordered On",
+    "history.orderId": "Order ID",
+    "history.orderStatus": "Order Status",
+    "history.amount": "Order Amount",
+
+    "order.summary": "Order Summary",
+    "order.your": "Your Order",
+    "order.itemTotal": "Item Total",
+    "order.orderDetails": "Order Details",
+    "order.number": "Order Number",
+    "order.payment": "Payment",
+    "order.paid": "Paid",
+    "order.orderDate": "Date",
+    "order.phoneNumber": "Phone Number",
+    "order.deliver": "Deliver to",
+
+    "payment.review": "Review Cart",
+    "payment.timeline":"within 30 minutes",
+    "payment.delivery": "Delivery",
+    "payment.deliver": "Deliver From",
+    "payment.deliverTo": "Deliver To",
+    "payment.select": "Select Payment Mode",
+    "payment.proceed": "Proceed",
+    
+    "profile.userName": "User name",
+    "profile.emailId": "Email ID",
+    "profile.mob": "Mobile Number",
+    "profile.update": "Update",
+    "profile.address": "Address Book",
+    "profile.lan": "Choose Language",
+    "profile.switch": "Switch to Admin",
+    
+    "sub.selected": " Subscription Selected",
+    "sub.range": "Subscription date range",
+    "sub.summary": "Bill Summary",
+    "sub.selectAdd": "Select Address",
+    "sub.total": "Total",
+    "sub.online": "Online Payment",
+
+    "sub.free": "FREE",
+    "sub.grandTotal": "Grand Total",
+    "sub.orderDetails": "Order Details",
+    "sub.orderNo": "Order Number"
 }

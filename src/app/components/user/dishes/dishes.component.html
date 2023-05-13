@@ -80,13 +80,13 @@
         <span class="h5 d-flex p-2 justify-content-between text-center" (click)="openBottomSheet()"
             *ngIf="cart.length >= 1 && currentTab === 0">
             <span class="col-6" *ngIf="!isBottomSheetOpened">
-                {{totalItemsCount()}} Item(s) Added
+                {{totalItemsCount()}} {{i18n('checkout.itemAdded')}}
             </span>
         </span>
         <span class="h5 d-flex p-2 justify-content-between text-center" (click)="openSubscriptionBottomSheet()"
             *ngIf="selectedSubs._id !== '' && currentTab === 1">
             <span class="col-12" *ngIf="!isBottomSheetOpened">
-                Subscription Added
+                {{i18n('dishes.subscriptionAdded')}}
             </span>
         </span>
         <app-bottom-nav *ngIf="!isBottomSheetOpened"></app-bottom-nav>

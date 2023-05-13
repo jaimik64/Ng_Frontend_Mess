@@ -20,10 +20,6 @@ export class NavbarComponent extends I18nService {
     this.filteredData = JSON.parse(localStorage.getItem('Menu') ?? '')
   }
 
-  filterPages() {
-
-  }
-
   logout() {
     localStorage.clear()
     this.snackBar.open('Logged Out', 'Ok', {

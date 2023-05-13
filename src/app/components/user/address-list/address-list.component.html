@@ -2,19 +2,19 @@
     <mat-icon (click)="close()" class="border">close</mat-icon>
 </span>
 <span class="d-flex text-start my-1 h4">
-    Select an address
+    {{i18n('user.selectAddress')}}
 </span>
 
 <div class="container card p-2">
     <span (click)="addAddress()">
         <mat-icon>add</mat-icon>
-        <span class="v-align-super">Add Address</span>
+        <span class="v-align-super">{{i18n('user.addAddress')}}</span>
     </span>
 </div>
 
 <div class="block-container my-2">
     <span class="text-start h5">
-        Saved addresses
+        {{i18n('user.savedAddresses')}}
     </span>
 
     <ng-container *ngFor="let address of addresses">

@@ -84,5 +84,74 @@
     "dishes.edit": "डिश संपादित करें",
     "dishes.remove": "डिश हटा दें",
     "dishes.select-day": "दिन चुनें",
-    "dishes.dish-type": "डिश प्रकार का चयन करें"
+    "dishes.dish-type": "डिश प्रकार का चयन करें",
+
+    "user.selectAddress": "एक पता चुनें",
+    "user.addAddress": "पता जोड़ें",
+    "user.savedAddresses": "सहेजे गए पते",
+
+    "address.name": "नाम दर्ज करें",
+    "address.mobile": "मोबाइल दर्ज करें",
+    "address.add": "पता दर्ज करें",
+    "address.pincode": "पिनकोड दर्ज करें",
+    "address.city": "शहर दर्ज करें",
+    "address.edit": "संपादन करें",
+    "address.addBtn": "दारज करे",
+
+    "checkout.itemAdded": "आइटम जोड़ा गया",
+    "checkout.addMore": "और आइटम जोड़ें",
+    "checkout.bill": "बिल सारांश",
+    "checkout.subtotal": "उप-योग",
+    "checkout.delivery": "वितरण शुल्क",
+    "checkout.grand": "कुल योग",
+    "checkout.deliverTo": "करने के लिए वितरित",
+    "checkout.total": "कुल",
+    "checkout.placeOrder": "आदेश देना",
+    
+
+    "dishes.subscriptionAdded": "सदस्यता जोड़ी गई",
+
+    "history.orderedOn": "पर आदेश दिया",
+    "history.orderId": "आदेश कामतत्व",
+    "history.orderStatus": "आदेश की स्थिति",
+    "history.amount": "ऑर्डर करने की राशि",
+
+    "order.summary": "आदेश सारांश",
+    "order.your": "आपका आदेश",
+    "order.itemTotal": "कुल आइटम",
+    "order.orderDetails": "ऑर्डर का विवरण",
+    "order.number": "क्रम संख्या",
+    "order.payment": "भुगतान",
+    "order.paid": "चुकाया गया",
+    "order.orderDate": "तारीख",
+    "order.phoneNumber": "फ़ोन नंबर",
+    "order.deliver": "वितरित करने के लिए",
+
+    "payment.review": "कार्ट की समीक्षा करें",
+    "payment.timeline":"30 मिनट के भीतर",
+    "payment.delivery": "वितरण",
+    "payment.deliver": "से वितरित",
+    "payment.deliverTo": "करने के लिए वितरित",
+    "payment.select": "भुगतान मोड का चयन करें",
+    "payment.proceed": "आगे बढ़ना",
+    
+    "profile.userName": "उपयोगकर्ता नाम",
+    "profile.emailId": "ईमेल आईडी",
+    "profile.mob": "मोबाइल नंबर",
+    "profile.update": "अद्यतन",
+    "profile.address": "पता पुस्तिका",
+    "profile.lan": "भाषा चुनें",
+    "profile.switch": "व्यवस्थापक पर स्विच करें",
+    
+    "sub.selected": " सदस्यता चयनित",
+    "sub.range": "सदस्यता तिथि सीमा",
+    "sub.summary": "बिल सारांश",
+    "sub.selectAdd": "पता चुनें",
+    "sub.total": "कुल",
+    "sub.online": "ऑनलाइन भुगतान",
+
+    "sub.free": "मुक्त",
+    "sub.grandTotal": "कुल योग",
+    "sub.orderDetails": "ऑर्डर का विवरण",
+    "sub.orderNo": "क्रम संख्या"
 }
