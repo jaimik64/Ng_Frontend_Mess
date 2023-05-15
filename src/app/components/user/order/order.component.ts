@@ -55,4 +55,20 @@ export class OrderComponent extends I18nService implements OnInit {
     this.service.selectedOrderHistory = null;
     this.router.navigateByUrl('/user/history');
   }
+
+  cancelOrder() {
+    this.service.updateOrder(this.orderData._id, sessionStorage.getItem('userId') ?? '', { status: 'cancel' }).subscribe({
+      next: res => {
+        if (res.meta.errorCode === 0) {
+          this.snackbar.open('Order Cancelled', '', { duration: 3000 });
+          this.router.navigateByUrl('/user/history');
+        } else {
+          this.snackbar.open(res.meta.message, '', { duration: 3000 });
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        this.snackbar.open(err.error.meta.message, '', { duration: 3000 });
+      }
+    })
+  }
 }

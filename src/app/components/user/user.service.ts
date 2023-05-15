@@ -173,4 +173,7 @@ export class UserService {
     return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.UpdateUserProfile}/${userId}`, updatedData);
   }
 
+  updateOrder(orderId: string, userId: string, data: any) {
+    return this.http.put<GenericResponse>(`${environment.baseUrl}${environment.UserUpdateOrder}/${userId}/${orderId}`, data);
+  }
 }

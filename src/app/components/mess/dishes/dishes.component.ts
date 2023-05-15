@@ -55,8 +55,8 @@ export class DishesComponent extends I18nService implements OnInit {
 
   addDish() {
     const dialogRef = this.dialog.open(AddDishComponent, {
-      height: '75%',
-      width: '80%',
+      maxHeight: '75%',
+      minWidth: '40%',
       data: { title: 'Add', add: true, dish: {} }
     })
 
@@ -79,8 +79,8 @@ export class DishesComponent extends I18nService implements OnInit {
 
   updateDish(dishData: dish) {
     const dialogRef = this.dialog.open(AddDishComponent, {
-      height: "75%",
-      width: "80%",
+      maxHeight: "75%",
+      minWidth: "40%",
       data: { title: "Update", add: false, dish: dishData }
     })
 

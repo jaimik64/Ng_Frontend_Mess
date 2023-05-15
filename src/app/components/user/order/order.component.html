@@ -21,6 +21,11 @@
     </span>
 
     <div class="block-container my-1">
+        <div class="d-flex justify-content-end text-end" *ngIf="orderData.status === 'placed'">
+            <span (click)="cancelOrder()">
+                Cancel Order
+            </span>
+        </div>
         <div class="w-100 card my-1 p-3" *ngFor="let dish of orderData.DishDetails">
             <div class="d-flex">
                 <div class="col-10">
@@ -69,62 +74,62 @@
                 </span>
             </span>
         </div>
+
+
+        <span class="d-flex text-center my-3">
+            <span class="col-4">
+                <hr />
+            </span>
+            <span class="col-4 h5">{{i18n('order.orderDetails')}}</span>
+            <span class="col-4">
+                <hr />
+            </span>
+        </span>
+
+        <div>
+            <div class="m-1 my-2">
+                <span class="d-flex text-muted">
+                    {{i18n('order.number')}}
+                </span>
+                <span class="d-flex">
+                    {{orderData._id}}
+                </span>
+            </div>
+            <div class="m-1 my-2">
+                <span class="d-flex text-muted">
+                    {{i18n('order.payment')}}
+                </span>
+                <span class="d-flex">
+                    {{i18n('order.paid')}}: {{orderData.payment}}
+                </span>
+            </div>
+            <div class="m-1 my-2">
+                <span class="d-flex text-muted">
+                    {{i18n('order.orderDate')}}
+                </span>
+                <span class="d-flex">
+                    {{orderData.createdAt | date: 'medium'}}
+                </span>
+            </div>
+            <div class="m-1 my-2">
+                <span class="d-flex text-muted">
+                    {{i18n('order.phoneNumber')}}
+                </span>
+                <span class="d-flex">
+                    {{orderData.Address[0].mobile}}
+                </span>
+            </div>
+            <div class="m-1 my-2">
+                <span class="d-flex text-muted">
+                    {{i18n('order.deliver')}}
+                </span>
+                <span class="d-flex">
+                    {{orderData.Address[0].address}}, {{orderData.Address[0].city}}
+                </span>
+            </div>
+        </div>
     </div>
 
-    <span class="d-flex text-center my-3">
-        <span class="col-4">
-            <hr />
-        </span>
-        <span class="col-4 h5">{{i18n('order.orderDetails')}}</span>
-        <span class="col-4">
-            <hr />
-        </span>
-    </span>
-
-    <div>
-        <div class="m-1 my-2">
-            <span class="d-flex text-muted">
-                {{i18n('order.number')}}
-            </span>
-            <span class="d-flex">
-                {{orderData._id}}
-            </span>
-        </div>
-        <div class="m-1 my-2">
-            <span class="d-flex text-muted">
-                {{i18n('order.payment')}}
-            </span>
-            <span class="d-flex">
-                {{i18n('order.paid')}}: {{orderData.payment}}
-            </span>
-        </div>
-        <div class="m-1 my-2">
-            <span class="d-flex text-muted">
-                {{i18n('order.orderDate')}}
-            </span>
-            <span class="d-flex">
-                {{orderData.createdAt | date: 'medium'}}
-            </span>
-        </div>
-        <div class="m-1 my-2">
-            <span class="d-flex text-muted">
-                {{i18n('order.phoneNumber')}}
-            </span>
-            <span class="d-flex">
-                {{orderData.Address[0].mobile}}
-            </span>
-        </div>
-        <div class="m-1 my-2">
-            <span class="d-flex text-muted">
-                {{i18n('order.deliver')}}
-            </span>
-            <span class="d-flex">
-                {{orderData.Address[0].address}}, {{orderData.Address[0].city}}
-            </span>
-        </div>
+    <div class="fixed-bottom">
+        <app-bottom-nav></app-bottom-nav>
     </div>
-</div>
-
-<div class="fixed-bottom">
-    <app-bottom-nav></app-bottom-nav>
-</div>

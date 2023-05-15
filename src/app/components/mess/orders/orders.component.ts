@@ -35,6 +35,7 @@ export class OrdersComponent extends I18nService implements OnInit {
     { label: "Preparing", key: 'preparing' },
     { label: "Out For Delivery", key: 'outfordelivery' },
     { label: "Delivered", key: 'delivered' },
+    { label: "Canceled", key: 'cancel' }
   ]
   status: string = '';
 

@@ -35,6 +35,7 @@
                                 <span *ngIf="row.status=== 'outfordelivery'">{{i18n('order.out-for-delivery')}}</span>
                                 <span *ngIf="row.status== 'placed'">{{i18n('order.placed')}}</span>
                                 <span *ngIf="row.status === 'delivered'">{{i18n('order.delivered')}}</span>
+                                <span *ngIf="row.status === 'cancel'">{{i18n('order.cancel')}}</span>
                             </span>
                             <mat-form-field *ngIf="row.updateStatus" appearance="outline" class="h-25 font-small">
                                 <mat-select [(value)]="row.status">
@@ -64,7 +65,7 @@
                     <ng-container matColumnDef="update">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{i18n('order.edit')}}</th>
                         <td mat-cell *matCellDef="let element">
-                            <mat-icon class="cursor" *ngIf="!element.updateStatus"
+                            <mat-icon class="cursor" *ngIf="!element.updateStatus && element.status !== 'cancel'"
                                 (click)="element.updateStatus = !element.updateStatus">edit
                             </mat-icon>
                             <mat-icon class="cursor" *ngIf="element.updateStatus"

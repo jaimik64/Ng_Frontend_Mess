@@ -56,5 +56,6 @@ export const environment = {
     UserSavePayment: '/order/storeRPOrderDetails',
     UserCreateOrder: '/order/createOrder',
     UserProfile: '/users/getProfile',
-    UpdateUserProfile: '/users/updateProfile'
+    UpdateUserProfile: '/users/updateProfile',
+    UserUpdateOrder: '/users/updateOrder'
 };

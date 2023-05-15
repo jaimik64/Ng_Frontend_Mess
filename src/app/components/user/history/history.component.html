@@ -14,6 +14,8 @@
                                 <span *ngIf="order.status=== 'outfordelivery'">{{i18n('order.out-for-delivery')}}</span>
                                 <span *ngIf="order.status== 'placed'">{{i18n('order.placed')}}</span>
                                 <span *ngIf="order.status === 'delivered'">{{i18n('order.delivered')}}</span>
+                                <span *ngIf="order.status === 'cancel'">{{i18n('order.cancel')}}</span>
+
                             </span>
                             <span class="text-muted d-flex">{{i18n('history.amount')}} : ₹ {{order.totalbill}}</span>
                         </span>
