@@ -58,6 +58,7 @@ export class LoginComponent extends I18nService implements OnInit {
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('role', res.data.user.role);
         sessionStorage.setItem('userId', res.data.user._id);
+        sessionStorage.setItem('userName', res.data.user.name);
 
         let role = localStorage.getItem('role');
 

@@ -74,7 +74,16 @@ export class SignupComponent extends I18nService implements OnInit {
 
   signup() {
     this.disableNextBtn = true
-    this.service.signup(this.authForm.value).subscribe((res: any) => {
+
+    let req = {
+      name: this.authForm.get('name')?.value,
+      email: this.authForm.get('email')?.value.toLowerCase(),
+      mobile: this.authForm.get('mobile')?.value,
+      password: this.authForm.get('password')?.value,
+      confirm: this.authForm.get('confirm')?.value
+    }
+
+    this.service.signup(req).subscribe((res: any) => {
       if (res.meta.errorCode === 0) {
         this.snackBar.open(res.meta.message, 'Ok', {
           verticalPosition: 'top'

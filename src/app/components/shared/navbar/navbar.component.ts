@@ -14,9 +14,12 @@ export class NavbarComponent extends I18nService {
   searchText: string = '';
   filteredData: any[] = [];
   lan: string = localStorage.getItem('ln') ?? 'en';
+  userName: string = sessionStorage.getItem('userName') ?? 'User';
+  role: string = localStorage.getItem('role') ?? 0 === 0 ? 'User' : 'Admin';
 
   constructor(private router: Router, private snackBar: MatSnackBar) {
     super();
+
     this.filteredData = JSON.parse(localStorage.getItem('Menu') ?? '')
   }
 

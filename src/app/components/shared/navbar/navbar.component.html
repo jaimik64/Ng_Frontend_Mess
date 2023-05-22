@@ -49,7 +49,7 @@
                     <div class="username d-flex align-items-center mx-4 mx-sm-none" [matMenuTriggerFor]="menu"
                         #trigger="matMenuTrigger" (click)="trigger.openMenu()">
                         <div class="user-initials text-uppercase">
-                            JK
+                            {{userName}}
                         </div>
                         <span class="username-dropdown-container d-none d-sm-block">
                             <mat-icon class="username-dropdown-icon ">expand_more</mat-icon>
@@ -63,8 +63,8 @@
     </mat-sidenav-content>
     <mat-menu #menu="matMenu" class="user-menu">
         <span class="user-info">
-            <span class="h5 mb-0">Jaimik</span>
-            <span>Admin</span>
+            <span class="h5 mb-0">{{userName}}</span>
+            <span>{{role}}</span>
         </span>
         <span>
             <button class="d-block d-sm-none" mat-menu-item>
